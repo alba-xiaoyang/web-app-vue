@@ -1,16 +1,16 @@
 <template>
 <div class="list-task-done">
-  <h1>Tareas terminadas</h1>
+  <h1 class="title">Tareas terminadas</h1>
   <ul>
     <li>
       <div class="task">
-        <h3>Tarea 1</h3>
+        <h3 class="subtitle">Tarea 1</h3>
         <div class="data">
           <p>Juan Pérez</p>
           <p>20/01/2025</p>
         </div>
       </div>
-      <button>Sin hacer</button>
+      <button class="botton-undone">Sin hacer</button>
     </li>
   </ul>
 </div>
@@ -39,20 +39,34 @@ li {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 24px;
+  gap: 1px;
   height: auto;
   width: 100%;
 }
 
+
 .task {
-  border: 2px solid black;
+  width: 100%;
+
+}
+
+.title {
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .data {
-  border: 2px solid black;
   display: flex;
   flex-direction: row;
-  gap: 40px;
+  justify-content: space-between;
+  padding-right: 5px;
 }
 
 button {

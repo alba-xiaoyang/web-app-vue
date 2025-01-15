@@ -33,6 +33,12 @@
 
   <style scoped>
 
+  button:hover img{
+    filter:brightness(0);
+    transition: filter 0.3s ease;
+
+  }
+
   nav {
     width: 20%;
     height: auto;
@@ -47,6 +53,8 @@
     gap: 50px;
     font-size: 24px;
     font-family: Questrial, sans-serif;
+    justify-content: space-between;
+    border: 1px solid black;
   }
 
   .nav-header {
@@ -69,13 +77,18 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    gap: 45px;
+    gap: 28px;
     padding-left: 32px;
+    border-radius: 0;
+
   }
+
+
 
   button:hover {
     background-color: white;
     color: var(--rojopastel);
+
   }
 
   img {
@@ -92,6 +105,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 50px;
   }
 
   .nav-footer {
@@ -101,6 +115,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  #logout img{
+    height: 40px;
+    width: auto;
+    background-color: transparent;
   }
 
   </style>
