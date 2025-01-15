@@ -22,40 +22,46 @@
   height: auto;
   background-color: rgb(108, 192, 153, 0.3);
   border-radius: 12px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 ul {
-  list-style-type: disc;
-  border: 2px solid black;
+  height: auto;
+  width: 80%;
 }
 
 li {
+  border: 2px solid black;
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
-  border: 2px solid black;
+  justify-content: center;
+  gap: 24px;
+  height: auto;
+  width: 100%;
 }
 
 .task {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  border: 2px solid black;
 }
 
 .data {
+  border: 2px solid black;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  gap: 16px;
+  gap: 40px;
 }
 
 button {
-  display: inline-flex;
+  height: 50px;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-color: var(--rojopastel);
   color: white;
   border: none;
