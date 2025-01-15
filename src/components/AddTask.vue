@@ -5,7 +5,7 @@
 <style>
 .add-task {
   height: 100px;
-  width: 100%;
+  width: 100%; /* Asegurar que ocupen todo el ancho del contenedor */
   background-color: var(--amarillopastel);
 }
 </style>

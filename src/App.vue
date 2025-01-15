@@ -21,44 +21,30 @@ import UndoneList from './components/UndoneList.vue';
   </div>
 </template>
 
-<style>
-  @import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
-
-:root {
-  --azuloscuropastel: #9abfcf;
-  --azulclaropastel: #afced1;
-  --verdepastel: #6cc099;
-  --amarillopastel:  #ffdc9c;
-  --rosapastel: #ffb6ad;
-  --rojopastel: #ee6f6f;
-  --grispastel: #e5decf;
-  --grisoscuropastel: #afb7bb;
-  --grisclaropastel: #e8e8e8;
-  --bordemaqueta: 2px solid black;
-}
-
-body {
-  background-color: white;
-  margin: 0;
-  padding: 0;
-  font-family: Questrial, sans-serif;
-  font-size: large;
-}
-
+<style scoped>
 .container {
-  width: 80%;
-  height: 100%;
+  width: 80%; /* Cambiar de 80% a 100% para usar todo el ancho */
+  height: auto; /* Permitir altura dinámica */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* Mejor alineación en pantallas pequeñas */
+  gap: 1rem; /* Añadir separación entre elementos */
 }
 
 .lists {
-  height: 400px;
+  height: auto; /* Altura dinámica */
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column; /* Coloca los elementos en una columna en lugar de fila */
+  gap: 1rem; /* Añade separación entre listas */
   align-items: center;
-  justify-content: center;
 }
+
+@media (min-width: 1024px) {
+  .lists {
+    flex-direction: row; /* En pantallas grandes, cambia a fila */
+    justify-content: space-around;
+  }
+}
+
 </style>
