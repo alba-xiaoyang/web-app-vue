@@ -31,34 +31,18 @@
 
   </template>
 
-  <style>
-
-  @import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
-
-  :root {
-    --azuloscuropastel: #9abfcf;
-    --azulclaropastel: #afced1;
-    --verdepastel: #6cc099;
-    --amarillopastel:  #ffdc9c;
-    --rosapastel: #ffb6ad;
-    --rojopastel: #ee6f6f;
-    --grispastel: #e5decf;
-    --grisoscuropastel: #afb7bb;
-    --grisclaropastel: #e8e8e8;
-    --bordemaqueta: 2px solid black;
-  }
+  <style scoped>
 
   nav {
     width: 20%;
     height: auto;
-    background-color: var(--azuloscuropastel);
+    background-color: var(--rojopastel);
     display: flex;
     flex-direction: column;
-
-    /* justify-content: center; */
-
+    justify-content: center;
     align-items: center;
-    padding-top: 50px;
+    grid-template-columns: auto;
+    padding-top: 25px;
     padding-bottom: 25px;
     gap: 50px;
     font-size: 24px;
@@ -77,24 +61,25 @@
   button {
     width: 100%;
     height: 75px;
-    background-color: var(--azuloscuropastel);
+    background-color: var(--rojopastel);
     color: white;
     cursor: pointer;
     border: 0;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 45px;
+    padding-left: 32px;
   }
 
   button:hover {
     background-color: white;
-    color: var(--azuloscuropastel);
+    color: var(--rojopastel);
   }
 
   img {
-    padding-bottom: 8px; /* Ajuste fino */
+    padding-bottom: 8px;
     height: 50px;
     width: auto;
     background-color: transparent;

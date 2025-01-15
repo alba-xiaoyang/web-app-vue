@@ -2,7 +2,7 @@
   <div class="calendar">Aquí va el calendario que hizo Ricky</div>
 </template>
 
-<style>
+<style scoped>
 .calendar {
   height: 400px;
   width: 100%;

@@ -1,52 +1,74 @@
 <template>
 <div class="list-task-done">
-          <h1>Tareas terminadas</h1>
-          <ul>
-            <li>
-              <h3>Tarea</h3>
-              <div class="data">
-                <p>Nombre</p>
-                <p>Fecha</p>
-              </div>
-            </li>
-          </ul>
+  <h1>Tareas terminadas</h1>
+  <ul>
+    <li>
+      <div class="task">
+        <h3>Tarea 1</h3>
+        <div class="data">
+          <p>Juan Pérez</p>
+          <p>20/01/2025</p>
         </div>
+      </div>
+      <button>Sin hacer</button>
+    </li>
+  </ul>
+</div>
 </template>
 
 <style>
 .list-task-done {
-  margin: 20px;
-  background-color: var(--verdepastel);
   width: 40%;
-  height: 80%;
+  height: auto;
+  background-color: rgb(108, 192, 153, 0.3);
   border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.list-task-done h1 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.list-task-done ul {
+ul {
   list-style-type: disc;
-  padding-left: 40px;
+  border: 2px solid black;
 }
 
-.list-task-done li {
-  margin-bottom: 15px;
-}
-
-.list-task-done .data {
+li {
   display: flex;
   flex-direction: row;
-  gap: 40%;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
 }
 
-.list-task-done h3 {
-  margin: 0;
+.task {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.list-task-done p {
-  margin: 5px 0;
+.data {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 16px;
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--rojopastel);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: white;
+  border: 2px solid var(--rojopastel);
+  color: var(--rojopastel);
 }
 </style>

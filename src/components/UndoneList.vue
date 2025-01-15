@@ -16,7 +16,7 @@
 <style>
 .list-task-undone {
   margin: 20px;
-  background-color: var(--rojopastel);
+  background-color: rgba(238, 111, 111, 0.3); ;
   height: 80%;
   width: 40%;
   border-radius: 12px;
