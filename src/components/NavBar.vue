@@ -1,3 +1,40 @@
+<script setup>
+import { ref, computed } from 'vue'
+
+const routes = [
+    {
+      path: '/',
+      name: 'home',
+      component: HomeView,
+    },
+    {
+      path: '/',
+      name: 'profile',
+      component: ProfileView,
+    },
+    {
+      path: '/',
+      name: 'roulette',
+      component: RouletteView,
+    },
+    {
+      path: '/',
+      name: 'chats',
+      component: ChatsView,
+    },
+  ]
+
+const currentPath = ref(window.location.hash)
+
+window.addEventListener('hashchange', () => {
+  currentPath.value = window.location.hash
+})
+
+const currentView = computed(() => {
+  return routes[currentPath.value.slice(1) || '/']
+})
+</script>
+
 <template>
 
   <nav>
