@@ -29,13 +29,14 @@
 
 <style scoped>
 .container {
-  width: 80%;
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 50px;
+  margin-left: 300px;
 }
 
 .card-profile {
@@ -44,24 +45,58 @@
   align-items: center;
   height: 600px;
   width: 400px;
-  border: 2px solid black;
   border-radius: 12px;
   background-color: var(--azulclaropastel);
   padding-top: 50px;
   gap: 50px;
 }
 
-.card-header {
-  border: 2px solid black;
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .card-body {
-  border: 2px solid black;
   width: 80%;
 }
 
 .card-footer {
-  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.save {
+  background-color: var(--rojopastel);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.save:hover {
+  background-color: white;
+  color: var(--rojopastel);
+  border: 1px solid var(--rojopastel);
+  transform: translateY(-2px);
 }
 </style>
 

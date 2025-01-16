@@ -44,15 +44,18 @@ import { RouterLink, RouterView } from 'vue-router';
       </button>
     </div>
   </nav>
-      <RouterView />
+    <RouterView />
 
 </template>
 
 <style scoped>
+
 .css-routerLink {
   display: flex;
   flex-direction: row;
-  gap: 12px;
+  color: white;
+  text-decoration: none;
+  gap: 32px;
 }
 
 button:hover img{
@@ -61,21 +64,23 @@ button:hover img{
 }
 
 nav {
-  width: 20%;
-  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100%;
   background-color: var(--rojopastel);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  grid-template-columns: auto;
   padding-top: 25px;
   padding-bottom: 25px;
-  gap: 50px;
   font-size: 24px;
   font-family: Questrial, sans-serif;
-  justify-content: space-between;
+  font-weight: normal;
 }
+
 
 .nav-header {
   width: 100%;
@@ -88,7 +93,7 @@ nav {
 
 button {
   width: 100%;
-  height: 75px;
+  height: 100px;
   background-color: var(--rojopastel);
   color: white;
   cursor: pointer;
@@ -97,16 +102,21 @@ button {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  gap: 28px;
   padding-left: 32px;
   border-radius: 0;
 }
 
 button:hover {
   background-color: white;
-  color: var(--rojopastel);
+  color: black;
   border: 0;
+  transform: translateY(-2px);
+}
 
+button:hover .css-routerLink {
+  text-decoration: none;
+  transform: translateY(-2px);
+  color: black;
 }
 
 img {
@@ -117,13 +127,12 @@ img {
 }
 
 .nav-center {
-  height: 225px;
+  height: 350px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 50px;
 }
 
 .nav-footer {

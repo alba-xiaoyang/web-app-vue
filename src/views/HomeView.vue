@@ -24,6 +24,7 @@ import UndoneList from '@/components/UndoneList.vue';
   height: auto; /* Permitir altura dinámica */
   display: flex;
   flex-direction: column;
+  margin-left: 300px;
 }
 
 .lists {
