@@ -54,7 +54,6 @@
     font-size: 24px;
     font-family: Questrial, sans-serif;
     justify-content: space-between;
-    border: 1px solid black;
   }
 
   .nav-header {
@@ -88,6 +87,7 @@
   button:hover {
     background-color: white;
     color: var(--rojopastel);
+    border: 0;
 
   }
 

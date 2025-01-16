@@ -16,7 +16,7 @@
 </div>
 </template>
 
-<style>
+<style scoped>
 .list-task-done {
   width: 40%;
   height: auto;
@@ -34,16 +34,14 @@ ul {
 }
 
 li {
-  border: 2px solid black;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 1px;
   height: auto;
   width: 100%;
+  gap: 12px;
 }
-
 
 .task {
   width: 100%;
@@ -51,13 +49,13 @@ li {
 }
 
 .title {
-  font-size: 35px;
+  font-size: 32px;
   font-weight: bold;
   margin-bottom: 16px;
 }
 
 .subtitle {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
   text-align: center;
 }
@@ -71,7 +69,7 @@ li {
 
 button {
   height: 50px;
-  width: 100px;
+  width: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
