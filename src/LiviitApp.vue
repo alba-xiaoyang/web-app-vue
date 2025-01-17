@@ -63,6 +63,7 @@ button:hover img{
   transition: filter 0.3s ease;
 }
 
+/*Barra más delgada*/
 nav {
   position: fixed;
   top: 0;

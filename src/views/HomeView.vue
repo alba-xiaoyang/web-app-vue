@@ -10,6 +10,7 @@ import UndoneList from '@/components/UndoneList.vue';
 <template>
   <div class="container">
     <TheCalendar/>
+    <!--Cambiamos el formulario por un buscador-->
     <TaskForm/>
     <div class="lists">
       <DoneList/>
