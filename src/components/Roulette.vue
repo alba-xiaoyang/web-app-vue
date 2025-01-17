@@ -30,7 +30,6 @@ function spinRoulette() {
 
 
 <template>
-
   <div id="roulette">
     <div ref="roulette-table" id="roulette-table" class="roulette-container">
 
@@ -98,6 +97,7 @@ body {
 #roulette {
   width: 18.75rem;
   height: 18.75rem;
+  top: 5%;
   position: relative;
   overflow: hidden;
   border-radius: 50%;

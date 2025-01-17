@@ -108,4 +108,22 @@ img {
   align-items: center;
   justify-content: center;
 }
+
+#roulette {
+  width: 100%;
+  height: 75px;
+  background-color: var(--rojopastel);
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+
+
+}
+
+button,
+#roulette {
+  width: 100%;
+  height: 75px;
+
+}
 </style>
