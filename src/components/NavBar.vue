@@ -137,33 +137,48 @@ img {
     left: 0;
     width: 100%;
     height: 60px;
+    display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    padding: 0;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
     background-color: var(--rojopastel);
     z-index: 1000;
   }
 
   .nav-header, .nav-center, .nav-footer {
+    display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    gap: 0;
+    gap: 0px;
     width: 100%;
     height: 100%;
+    padding: 0px;
+    margin: 0px;
   }
 
   button {
+    display: flex;
+    flex-direction: column;
     width: auto;
     height: 100%;
     padding: 0;
+    margin: 0;
     justify-content: center;
     border-radius: 0;
+    align-items: center;
   }
 
   .css-routerLink {
+    display: flex;
     flex-direction: column;
     gap: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
   }
 
   .css-routerLink h3 {
@@ -171,12 +186,12 @@ img {
   }
 
   img {
-    height: 30px;
+    height: 20px;
     width: auto;
   }
 
   #logout img{
-    height: 25px;
+    height: 15px;
     width: auto;
   }
 }
@@ -188,7 +203,7 @@ img {
     bottom: auto;
     top: 0;
     left: 0;
-    width: 150px;
+    width: 100px;
     height: 100%;
     flex-direction: column;
     justify-content: space-between;
@@ -205,6 +220,10 @@ img {
     width: 100%;
     height: 50px;
     padding-left: 10px;
+  }
+
+  .css-routerLink h3 {
+    display: none; /* Oculta el texto para solo mostrar íconos */
   }
 
   img {
