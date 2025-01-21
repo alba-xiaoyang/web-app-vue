@@ -1,24 +1,22 @@
 <script setup>
 import DoneList from '@/components/DoneList.vue';
-import NavBar from '@/components/NavBar.vue';
 import TaskForm from '@/components/TaskForm.vue';
 import TheCalendar from '@/components/TheCalendar.vue';
 import UndoneList from '@/components/UndoneList.vue';
 
+
 </script>
 
 <template>
-
-  <NavBar />
   <div class="container">
     <TheCalendar />
+    <!--Cambiamos el formulario por un buscador-->
     <TaskForm />
     <div class="lists">
       <DoneList />
       <UndoneList />
     </div>
   </div>
-
 </template>
 
 <style scoped>
@@ -28,6 +26,7 @@ import UndoneList from '@/components/UndoneList.vue';
   /* Permitir altura dinámica */
   display: flex;
   flex-direction: column;
+  margin-left: 300px;
 }
 
 .lists {

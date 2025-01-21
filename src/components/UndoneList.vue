@@ -1,52 +1,93 @@
 <template>
   <div class="list-task-undone">
-          <h1>Tareas por hacer</h1>
-          <ul>
-            <li>
-              <h3>Tarea</h3>
-              <div class="data">
-                <p>Nombre</p>
-                <p>Fecha</p>
-              </div>
-            </li>
-          </ul>
+    <h1 class="title">Tareas por hacer</h1>
+    <ul>
+      <li>
+        <div class="task">
+          <h3 class="subtitle">Tarea 1</h3>
+          <div class="data">
+            <p>Juan Pérez</p>
+            <p>20/01/2025</p>
+          </div>
         </div>
+        <button class="botton-done">Hecho</button>
+      </li>
+    </ul>
+  </div>
 </template>
 
-<style>
+<style scoped>
 .list-task-undone {
-  margin: 20px;
-  background-color: rgba(238, 111, 111, 0.3); ;
-  height: 80%;
   width: 40%;
+  height: auto;
+  background-color: rgba(238, 111, 111, 0.3);
+  ;
   border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.list-task-undone h1 {
-  text-align: center;
-  margin-bottom: 20px;
+ul {
+  height: auto;
+  width: 80%;
 }
 
-.list-task-undone ul {
-  list-style-type: disc;
-  padding-left: 40px;
-}
-
-.list-task-undone li {
-  margin-bottom: 15px;
-}
-
-.list-task-undone .data {
+li {
   display: flex;
   flex-direction: row;
-  gap: 40%;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  width: 100%;
+  gap: 12px;
 }
 
-.list-task-undone h3 {
-  margin: 0;
+.task {
+  width: 100%;
+
 }
 
-.list-task-undone p {
-  margin: 5px 0;
+.title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-right: 5px;
+}
+
+button {
+  height: 50px;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--verdepastel);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: white;
+  border: 2px solid var(--verdepastel);
+  color: var(--verdepastel);
 }
 </style>

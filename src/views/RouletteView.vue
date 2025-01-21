@@ -12,11 +12,10 @@ import TasksAssignment from '../components/TasksAssignment.vue';
     <div class="box-container">
       <Roulette />
     </div>
-    <NavBar />
   </main>
 </template>
 
-<style>
+<style scoped>
 .container {
   display: flex;
   flex-direction: row-reverse;

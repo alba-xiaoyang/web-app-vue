@@ -60,6 +60,7 @@
   height: 3.75rem;
   font-size: 1rem;
   cursor: pointer;
+  color: white;
   border-radius: 0.25rem;
   background-color: var(--rojopastel);
   box-shadow: 0 0 0.625rem var(--rojopastel);
@@ -77,8 +78,12 @@ button {
   height: 3.75rem;
   font-size: 1rem;
   font-family: Questrial, sans-serif;
+  border: none;
   cursor: pointer;
+  color: white;
+  font-weight: bold;
   border-radius: 0.25rem;
   box-shadow: 0 0 0.625rem var(--rojopastel);
+  background-color: var(--rojopastel);
 }
 </style>
