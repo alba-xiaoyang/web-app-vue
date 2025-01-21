@@ -21,11 +21,12 @@ import UndoneList from '@/components/UndoneList.vue';
 
 <style scoped>
 .container {
-  width: 80%;
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
-  margin-left: 300px;
+  margin-left: 250px;
+  padding: 25px;
 }
 
 .lists {
@@ -38,44 +39,27 @@ import UndoneList from '@/components/UndoneList.vue';
   padding-top: 24px;
 }
 
-/* Media Queries para modo mobile (vertical) */
-@media screen and (max-width: 768px) and (orientation: portrait) {
+@media (max-width: 480px) {
   .container {
+    padding: 20px 20px 0px 20px;
     flex-direction: column;
     align-items: center;
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
+    width: 100%; /* Asegura que ocupe todo el ancho de la pantalla */
   }
 
-  .container > *:not(.lists) {
+  .container > * {
     margin: 0 auto;
-    width: 100%; /* Los elementos ocupan todo el ancho */
-    align-items: center;
+    width: 100%; /* Cada elemento ocupa todo el ancho */
   }
 
   .lists {
-    flex-direction: column;
+    flex-direction: column; /* Listas en columnas */
     align-items: center;
-    gap: 1rem; /* Espaciado entre las listas */
-  }
-}
-
-/* Media Queries para modo horizontal (tablets y desktop) */
-@media screen and (min-width: 769px), (orientation: landscape) {
-  .container {
-    flex-direction: column;
-    margin-left: 300px; /* Ajusta margen lateral para incluir el navBar */
-  }
-
-  TheCalendar {
-    height: auto;
-    margin-bottom: 1rem;
-  }
-
-  .lists {
-    flex-direction: row; /* Coloca las listas lado a lado */
-    justify-content: center;
-    gap: 2rem;
+    width: 100%; /* Asegura que ocupen todo el ancho */
+    gap: 1rem; /* Espaciado entre listas */
+    padding-bottom: 70px;
   }
 }
 </style>

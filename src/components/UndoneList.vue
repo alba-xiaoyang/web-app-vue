@@ -90,4 +90,52 @@ button:hover {
   color: var(--verdepastel);
 }
 
+/* Media Queries para móviles */
+@media screen and (max-width: 768px) {
+  .list-task-undone {
+    width: 90%;
+    margin: 0 auto;
+    padding: 16px;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .task {
+    width: 100%;
+  }
+
+  .title {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .data {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+  }
+
+  button {
+    width: 90%;
+    height: 45px;
+  }
+}
+
 </style>

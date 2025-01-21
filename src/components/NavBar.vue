@@ -44,26 +44,6 @@ import { RouterLink } from 'vue-router';
 </template>
 
 <style scoped>
-.css-routerLink {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  color: white;
-  text-decoration: none;
-  gap: 20px;
-}
-
-.css-routerLink h3 {
-  font-size: 18px;
-  font-weight: 600;
-  margin: 0;
-}
-
-button:hover img{
-  filter:brightness(0);
-  transition: filter 0.3s ease;
-}
-
 nav {
   position: fixed;
   top: 0;
@@ -73,11 +53,11 @@ nav {
   background-color: var(--rojopastel);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 20px 0px;
   font-size: 16px;
   font-family: Questrial, sans-serif;
+  gap: 60px;
 }
 
 .nav-header, .nav-center, .nav-footer {
@@ -85,7 +65,7 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 
 button {
@@ -103,17 +83,19 @@ button {
   border-radius: 0;
 }
 
-button:hover {
-  background-color: white;
-  color: black;
-  border: 0;
-  transform: translateY(-2px);
+.css-routerLink {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  gap: 20px;
 }
 
-button:hover .css-routerLink {
-  text-decoration: none;
-  transform: translateY(-2px);
-  color: black;
+.css-routerLink h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
 }
 
 img {
@@ -129,31 +111,62 @@ img {
   background-color: transparent;
 }
 
+button:hover {
+  background-color: white;
+  color: black;
+  border: 0;
+  transform: translateY(-2px);
+}
+
+button:hover .css-routerLink {
+  text-decoration: none;
+  transform: translateY(-2px);
+  color: black;
+}
+
+button:hover img{
+  filter:brightness(0);
+  transition: filter 0.3s ease;
+}
+
 @media (max-width: 480px) {
   nav {
     position: fixed;
     bottom: 0;
-    top: auto; /* Garantiza que esté abajo */
+    top: auto;
     left: 0;
     width: 100%;
     height: 60px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     background-color: var(--rojopastel);
     z-index: 1000;
+    gap: 0;
   }
 
-  .nav-header, .nav-center, .nav-footer {
+  .nav-header, .nav-footer {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    gap: 0px;
-    width: 100%;
+    gap: 10px;
+    width: 20%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .nav-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    width: 80%;
     height: 100%;
     padding: 0px;
     margin: 0px;
@@ -206,7 +219,7 @@ img {
     width: 100px;
     height: 100%;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
   }
 
   .nav-header, .nav-center, .nav-footer {

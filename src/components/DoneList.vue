@@ -36,7 +36,6 @@ ul {
 li {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: center;
   height: auto;
   width: 100%;
@@ -57,7 +56,7 @@ li {
 .subtitle {
   font-size: 24px;
   font-weight: bold;
-  text-align: center;
+  align-items: flex-start;
 }
 
 .data {
@@ -65,6 +64,7 @@ li {
   flex-direction: row;
   justify-content: space-between;
   padding-right: 5px;
+  align-items: flex-start;
 }
 
 button {
@@ -88,5 +88,53 @@ button:hover {
   background-color: white;
   border: 2px solid var(--rojopastel);
   color: var(--rojopastel);
+}
+
+/* Media Queries para móviles */
+@media screen and (max-width: 768px) {
+  .list-task-done {
+    width: 90%;
+    margin: 0 auto;
+    padding: 16px;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .task {
+    width: 100%;
+  }
+
+  .title {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .data {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+  }
+
+  button {
+    width: 90%;
+    height: 45px;
+  }
 }
 </style>
