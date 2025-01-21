@@ -1,3 +1,6 @@
+<script></script>
+
+
 <template>
   <div class="container-tasksAssignment">
     <div>
@@ -6,8 +9,11 @@
     <div>
       <button @click="reset" class="reset">Reiniciar</button>
     </div>
-    <div>
-      <li> </li>
+    <div class="results-container">
+      <button class="results-button" @click="toggleResults">
+        {{ showResults ? "Ocultar resultados" : "Mostrar resultados" }}
+      </button>
+
     </div>
   </div>
 </template>
@@ -17,21 +23,62 @@
   width: 100%;
   height: 80%;
   display: flex;
-  justify-content: flex-end;
   flex-direction: column;
-  gap: 10%;
+  justify-content: flex-start;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  margin-right: 15%;
 }
 
-input #name {
+#name {
   width: 100%;
-  height: 100px;
-  display: flex;
+  height: 3.75rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 0.125rem solid hsl(180deg 4% 24%);
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0.625rem hsl(180deg 4% 24%);
+  font-family: Questrial, sans-serif;
+  transition: all 0.3s ease;
 }
 
+#name:hover {
+  border-color: var(--rojopastel);
+  box-shadow: 0 0 0.625rem var(--rojopastel);
+  background-color: #fefefe;
+}
 
-button .reset {
+#name:focus {
+  outline: none;
+  border-color: var(--rojopastel);
+  box-shadow: 0 0 0.625rem var(--rojopastel);
+  background-color: #fff;
+}
+
+.reset {
   width: 100%;
-  height: 100px;
+  height: 3.75rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  background-color: var(--rojopastel);
+  box-shadow: 0 0 0.625rem var(--rojopastel);
+  font-family: Questrial, sans-serif;
+}
 
+.link:hover,
+button:hover {
+  background-color: white;
+  color: var(--rojopastel);
+}
+
+button {
+  width: 100%;
+  height: 3.75rem;
+  font-size: 1rem;
+  font-family: Questrial, sans-serif;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0.625rem var(--rojopastel);
 }
 </style>
