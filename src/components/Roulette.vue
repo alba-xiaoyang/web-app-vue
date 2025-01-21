@@ -85,8 +85,8 @@ body {
 }
 
 .roulette-container {
-  width: 18.75rem;
-  height: 18.75rem;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   margin: auto;
   display: flex;
   align-items: center;
@@ -95,9 +95,8 @@ body {
 }
 
 #roulette {
-  width: 18.75rem;
-  height: 18.75rem;
-  top: 5%;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   position: relative;
   overflow: hidden;
   border-radius: 50%;

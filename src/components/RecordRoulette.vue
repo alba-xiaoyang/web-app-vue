@@ -19,29 +19,27 @@
 </template>
 
 <style scoped>
-
 .roulette-record {
-  height: auto;
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   border-radius: 12px;
+
 }
 
 .list {
-  width: 97%;
-  height: auto;
+  width: 100%;
+  height: 100%;
   background-color: rgb(255, 220, 156, 0.3);
   border-radius: 12px;
-  padding: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 ul {
-  height: auto;
+  height: 100%;
   width: 90%;
 }
 
@@ -56,7 +54,7 @@ li {
 }
 
 .title {
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: bold;
   margin-bottom: 16px;
 }
@@ -71,7 +69,7 @@ li {
 }
 
 .subtitle {
-  font-size: 24px;
+  font-size: 1.25rem;
   font-weight: bold;
   text-align: start;
   width: 30%;

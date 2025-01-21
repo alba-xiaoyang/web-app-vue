@@ -3,35 +3,22 @@
 
 <template>
   <div class="container-tasksAssignment">
-    <div>
-      <input v-model="name" type="text" id="name" placeholder="Introduce tu nombre">
-    </div>
-    <div>
-      <button @click="reset" class="reset">Reiniciar</button>
-    </div>
-    <div class="results-container">
-      <button class="results-button" @click="toggleResults">
-        {{ showResults ? "Ocultar resultados" : "Mostrar resultados" }}
-      </button>
-
-    </div>
+    <input v-model="name" type="text" id="name" placeholder="Introduce tu nombre">
+    <button @click="reset" class="reset">Reiniciar</button>
   </div>
 </template>
 
 <style scoped>
 .container-tasksAssignment {
   width: 100%;
-  height: 80%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 1.25rem;
   padding: 1.25rem;
-  margin-right: 15%;
 }
 
 #name {
-  width: 100%;
   height: 3.75rem;
   font-size: 1rem;
   padding: 0.5rem;
@@ -56,7 +43,6 @@
 }
 
 .reset {
-  width: 100%;
   height: 3.75rem;
   font-size: 1rem;
   cursor: pointer;
@@ -65,25 +51,14 @@
   background-color: var(--rojopastel);
   box-shadow: 0 0 0.625rem var(--rojopastel);
   font-family: Questrial, sans-serif;
+  border: none;
+  font-weight: bold;
+  margin-left: 1.5%;
 }
 
 .link:hover,
 button:hover {
   background-color: white;
   color: var(--rojopastel);
-}
-
-button {
-  width: 100%;
-  height: 3.75rem;
-  font-size: 1rem;
-  font-family: Questrial, sans-serif;
-  border: none;
-  cursor: pointer;
-  color: white;
-  font-weight: bold;
-  border-radius: 0.25rem;
-  box-shadow: 0 0 0.625rem var(--rojopastel);
-  background-color: var(--rojopastel);
 }
 </style>

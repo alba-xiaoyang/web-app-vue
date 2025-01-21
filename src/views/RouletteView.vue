@@ -1,39 +1,73 @@
 <script setup>
 import Roulette from '../components/Roulette.vue';
-import NavBar from '../components/NavBar.vue';
 import TasksAssignment from '../components/TasksAssignment.vue';
+import RecordRoulette from '../components/RecordRoulette.vue';
 </script>
 
 <template>
   <main class="container">
-    <div class="box-TasksAssignment">
-      <TasksAssignment />
+    <div class="roulette-container">
+      <h2 class="roulette-title">Ruleta de la suerte</h2>
+      <div class="box-container">
+        <div>
+          <Roulette />
+        </div>
+        <div class="box-TasksAssignment">
+          <TasksAssignment />
+        </div>
+      </div>
     </div>
-    <div class="box-container">
-      <Roulette />
+
+    <div class="box-RecordRoulette">
+      <RecordRoulette />
     </div>
+
   </main>
 </template>
 
-<style scoped>
+<style>
 .container {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   width: 100%;
+  gap: 1.5rem;
+  padding: 0.5rem;
+}
 
+.roulette-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.roulette-title {
+  font-size: 2rem;
+  text-align: center;
+  width: 100%;
 }
 
 .box-container {
   display: flex;
+  flex-direction: column;
   width: 100%;
-  margin-left: 10%;
-
+  max-width: 20rem;
+  justify-content: space-between;
 }
 
 .box-TasksAssignment {
   width: 100%;
   height: 100%;
   display: flex;
+}
+
+.box-RecordRoulette {
+  display: flex;
+  width: 100%;
+  height: 100%;
   justify-content: flex-end;
+  align-items: flex-start;
 }
 </style>
