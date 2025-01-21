@@ -8,16 +8,12 @@
       </div>
       <div class="card-body">
         <div class="name-profile">
-          <h3>Nombre</h3>
-          <p>Juan Pérez</p>
-        </div>
-        <div class="age-profile">
-          <h3>Edad</h3>
-          <p>25</p>
+          <h3>Nombre de usuario</h3>
+          <input type="text" placeholder="{{ nombre.usuario }}">
         </div>
         <div class="houses-profile">
-          <h3>Dirección</h3>
-          <p>Calle, número, piso y letra</p>
+          <h3>Grupo</h3>
+          <input type="text" placeholder="{{ grupo.usuario }}">
         </div>
       </div>
       <div class="card-footer">
@@ -35,20 +31,21 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 50px;
-  margin-left: 300px;
+  padding: 24px;
+  margin-left: 250px;
 }
 
 .card-profile {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 600px;
+  justify-content: space-between;
+  height: 500px;
   width: 400px;
   border-radius: 12px;
   background-color: var(--azulclaropastel);
   padding-top: 50px;
-  gap: 50px;
+  padding-bottom: 50px;
 }
 
 .profile-photo {
@@ -70,6 +67,15 @@
 
 .card-body {
   width: 80%;
+}
+
+input {
+  width: 100%;
+  height: 32px;
+  background-color: white;
+  color: black;
+  border: 0;
+  border-radius: 12px;
 }
 
 .card-footer {
@@ -97,6 +103,24 @@
   color: var(--rojopastel);
   border: 1px solid var(--rojopastel);
   transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    padding-top: 12px;
+    padding-bottom: 70px;
+  }
+
+  .save {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
 }
 </style>
 

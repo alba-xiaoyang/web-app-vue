@@ -90,8 +90,7 @@ button:hover {
   color: var(--verdepastel);
 }
 
-/* Media Queries para móviles */
-@media screen and (max-width: 768px) {
+@media (max-width: 480px) {
   .list-task-undone {
     width: 90%;
     margin: 0 auto;
@@ -137,5 +136,4 @@ button:hover {
     height: 45px;
   }
 }
-
 </style>

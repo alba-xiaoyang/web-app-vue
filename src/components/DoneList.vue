@@ -90,8 +90,7 @@ button:hover {
   color: var(--rojopastel);
 }
 
-/* Media Queries para móviles */
-@media screen and (max-width: 768px) {
+@media (max-width: 480px) {
   .list-task-done {
     width: 90%;
     margin: 0 auto;

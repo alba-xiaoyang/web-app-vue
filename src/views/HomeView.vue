@@ -44,21 +44,15 @@ import UndoneList from '@/components/UndoneList.vue';
     padding: 20px 20px 0px 20px;
     flex-direction: column;
     align-items: center;
-    padding: 0;
     margin: 0;
-    width: 100%; /* Asegura que ocupe todo el ancho de la pantalla */
-  }
-
-  .container > * {
-    margin: 0 auto;
-    width: 100%; /* Cada elemento ocupa todo el ancho */
+    width: 100%;
   }
 
   .lists {
-    flex-direction: column; /* Listas en columnas */
+    flex-direction: column-reverse;
     align-items: center;
-    width: 100%; /* Asegura que ocupen todo el ancho */
-    gap: 1rem; /* Espaciado entre listas */
+    width: 100%;
+    gap: 1rem;
     padding-bottom: 70px;
   }
 }
