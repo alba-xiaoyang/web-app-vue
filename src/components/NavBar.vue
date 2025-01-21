@@ -199,12 +199,12 @@ button:hover img{
   }
 
   img {
-    height: 20px;
+    height: 30px;
     width: auto;
   }
 
   #logout img{
-    height: 15px;
+    height: 25px;
     width: auto;
   }
 }
