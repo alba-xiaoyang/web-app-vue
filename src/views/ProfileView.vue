@@ -1,27 +1,58 @@
+<script setup>
+import { ref } from 'vue';
+import { doc, updateDoc } from 'firebase/firestore';
+import { db } from './../firebase';
+
+const userName = ref('');
+const groupId = ref('');
+
+// Función para guardar los datos en Firestore
+const saveData = async () => {
+  try {
+    const userDoc = doc(db, 'usuarios', 'idDelUsuario'); // Cambia 'idDelUsuario' por el ID real del documento
+    await updateDoc(userDoc, {
+      nombre: userName.value,
+      grupo: groupId.value,
+    });
+    alert('Datos guardados con éxito');
+  } catch (error) {
+    console.error('Error al guardar los datos: ', error);
+    alert('Ocurrió un error al guardar los datos');
+  }
+};
+</script>
+
 <template>
   <div class="container">
     <div class="card-profile">
       <div class="card-header">
         <div class="profile-photo">
-          <img src="/src/components/images/burbuja-de-dialogo (1).png" alt="Foto fr perfil de {{ usuario }}">
+          <img src="/src/components/images/burbuja-de-dialogo (1).png" alt="Foto de perfil">
         </div>
       </div>
       <div class="card-body">
         <div class="name-profile">
           <h3>Nombre de usuario</h3>
-          <input type="text" placeholder="{{ nombre.usuario }}">
+          <input
+            type="text"
+            v-model="userName"
+            placeholder="Introduce el nombre de usuario">
         </div>
         <div class="houses-profile">
           <h3>Grupo</h3>
-          <input type="text" placeholder="{{ grupo.usuario }}">
+          <input
+            type="text"
+            v-model="groupId"
+            placeholder="Introduce el grupo">
         </div>
       </div>
       <div class="card-footer">
-        <button class="save">Guardar</button>
+        <button class="save" @click="saveData">Guardar</button>
       </div>
     </div>
   </div>
 </template>
+
 
 <style scoped>
 .container {
