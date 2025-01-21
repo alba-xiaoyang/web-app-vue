@@ -153,20 +153,7 @@ button:hover img{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 10px;
     width: 20%;
-    height: 100%;
-    padding: 0px;
-    margin: 0px;
-  }
-
-  .nav-center {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    gap: 10px;
-    width: 80%;
     height: 100%;
     padding: 0px;
     margin: 0px;
@@ -175,7 +162,31 @@ button:hover img{
   button {
     display: flex;
     flex-direction: column;
-    width: auto;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    border-radius: 0;
+    align-items: center;
+  }
+
+  .nav-center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    width: 80%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .nav-center button {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
     height: 100%;
     padding: 0;
     margin: 0;
@@ -195,7 +206,7 @@ button:hover img{
   }
 
   .css-routerLink h3 {
-    display: none; /* Oculta el texto para solo mostrar íconos */
+    display: none; /*Oculta el texto*/
   }
 
   img {
@@ -207,45 +218,13 @@ button:hover img{
     height: 25px;
     width: auto;
   }
+
+  button:focus,
+button:active {
+  background-color: var(--rojopastel);
+  color: white;
+  outline: none;
+  transform: none;
 }
-
-@media (max-width: 480px) and (orientation: landscape) {
-  /* Modo horizontal: barra lateral */
-  nav {
-    position: fixed;
-    bottom: auto;
-    top: 0;
-    left: 0;
-    width: 100px;
-    height: 100%;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .nav-header, .nav-center, .nav-footer {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  button {
-    width: 100%;
-    height: 50px;
-    padding-left: 10px;
-  }
-
-  .css-routerLink h3 {
-    display: none; /* Oculta el texto para solo mostrar íconos */
-  }
-
-  img {
-    height: 30px;
-  }
-
-  .css-routerLink h3 {
-    display: block;
-    font-size: 12px;
-  }
 }
 </style>

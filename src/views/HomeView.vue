@@ -46,6 +46,7 @@ import UndoneList from '@/components/UndoneList.vue';
     align-items: center;
     margin: 0;
     width: 100%;
+    height: auto;
   }
 
   .lists {
