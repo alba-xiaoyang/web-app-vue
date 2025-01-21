@@ -40,22 +40,22 @@
 
 <style scoped>
 .calendar {
-  height: 100%; /* Permitir que tome todo el espacio disponible */
-  width: 100%; /* Usar el ancho completo del contenedor */
+  height: 100%;
+  width: 100%;
   background-color: var(--azulclaropastel);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 1rem; /* Espaciado interno para que no quede pegado a los bordes */
+  padding: 1rem;
   box-sizing: border-box;
   border-radius: 12px;
 }
 
 h1 {
   font-weight: 800;
-  margin: 0.5rem 0; /* Reducir el margen superior */
-  font-size: 1.5rem; /* Ajustar tamaño para pantallas más pequeñas */
+  margin: 0.5rem 0;
+  font-size: 1.5rem;
   text-align: center;
 }
 
@@ -68,8 +68,8 @@ p {
 ul {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adaptar columnas al ancho disponible */
-  gap: 0.5rem; /* Espaciado entre elementos */
-  width: 100%; /* Ocupar todo el ancho disponible */
+  gap: 0.5rem;
+  width: 100%;
   padding: 0;
   list-style: none;
   box-sizing: border-box;
@@ -80,7 +80,7 @@ li {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%; /* Ajustar al ancho de la celda */
+  width: 100%;
   height: auto;
   padding: 1rem;
   font-weight: 300;
@@ -125,8 +125,8 @@ time {
   }
 
   ul {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Ajuste para elementos más pequeños */
-    gap: 0.3rem; /* Reducir el espaciado */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.3rem;
   }
 
   li {
