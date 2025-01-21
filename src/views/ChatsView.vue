@@ -13,24 +13,33 @@
 
 <style scoped>
 .chat-group {
-  width: 80%;
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
-  margin-left: 300px;
+  margin-left: 250px;
+  padding: 24px;
 }
 
 .chat-body {
   background-color: var(--rosapastel);
   width: 100%;
-  height: 520px;
+  height: 500px;
 }
 
 .input-text {
   width: 100%;
-  height: 50px;
+  height: 40px;
   font-size: 32px;
   border: 0px;
-  border-radius: 12px;
+  background-color: var(--amarillopastel);
+}
+
+@media (max-width: 480px) {
+  .chat-group {
+    margin: 0;
+    padding: 12px;
+    padding-bottom: 70px;
+  }
 }
 </style>
