@@ -1,13 +1,25 @@
+<script setup>
+
+const { history } = defineProps({
+  history: {
+    type: Array
+  }
+})
+
+</script>
+
+
 <template>
   <div class="roulette-record">
     <div class="list">
       <h1 class="title">Historial de sorteos</h1>
       <ul>
-        <li>
+
+        <li v-for="(result,index) in history" :key="index">
           <div class="round">
-            <h3 class="subtitle">Tarea sorteada</h3>
+            <h3 class="subtitle">{{ result.task }}</h3>
             <div class="data">
-              <p>Juan Pérez</p>
+              <p>{{ result.username }}</p>
               <p>Fecha de la tirada</p>
               <p>Hora de la tirada</p>
             </div>
@@ -24,15 +36,17 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  background-color: rgb(255, 220, 156, 0.3);
   border-radius: 12px;
-
 }
 
 .list {
+  flex: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
   width: 100%;
   height: 100%;
-  background-color: rgb(255, 220, 156, 0.3);
-  border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;

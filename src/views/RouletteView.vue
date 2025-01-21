@@ -1,25 +1,32 @@
 <script setup>
+import { ref } from 'vue';
 import Roulette from '../components/Roulette.vue';
-import TasksAssignment from '../components/TasksAssignment.vue';
 import RecordRoulette from '../components/RecordRoulette.vue';
+
+const history = ref([]);
+
+function onRouletteSelection(username, task) {
+  history.value.push({
+    username: username,
+    task: task,
+  })
+
+}
 </script>
 
 <template>
   <main class="container">
     <div class="roulette-container">
-      <h2 class="roulette-title">Ruleta de la suerte</h2>
+      <h2 class="roulette-title">Ruleta de la "suerte"</h2>
       <div class="box-container">
         <div>
-          <Roulette />
-        </div>
-        <div class="box-TasksAssignment">
-          <TasksAssignment />
+          <Roulette :onRouletteSelection="onRouletteSelection" />
         </div>
       </div>
     </div>
 
     <div class="box-RecordRoulette">
-      <RecordRoulette />
+      <RecordRoulette :history="history" />
     </div>
 
   </main>
@@ -57,11 +64,7 @@ import RecordRoulette from '../components/RecordRoulette.vue';
   justify-content: space-between;
 }
 
-.box-TasksAssignment {
-  width: 100%;
-  height: 100%;
-  display: flex;
-}
+
 
 .box-RecordRoulette {
   display: flex;

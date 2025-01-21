@@ -1,6 +1,14 @@
 <script setup>
 import { useTemplateRef } from 'vue'
+import TaskForm from './TaskForm.vue';
 
+const { onRouletteSelection } = defineProps({
+  onRouletteSelection: {
+    type: Function
+  }
+})
+
+const name = defineModel();
 
 const roulette = useTemplateRef('roulette-table')
 
@@ -15,6 +23,7 @@ let totalSpinDegrees = 0;
 function spinRoulette() {
   const degree = Math.floor(Math.random() * 360);
   const completeTurnsDegrees = 360 * 5 + degree;
+  roulette.value.style.transition = "transform ease-in-out 2.5s"
   roulette.value.style.transform = `rotate(-${totalSpinDegrees + completeTurnsDegrees}deg)`;
   totalSpinDegrees += completeTurnsDegrees;
 
@@ -23,8 +32,18 @@ function spinRoulette() {
   const cheeseGradesRoulette = Math.ceil((degreesRoulette / cheeseDegreeRange));
   const selectedCheese = cheeses[cheeseGradesRoulette - 1];
 
-  console.log(selectedCheese, cheeseGradesRoulette, degreesRoulette);
+
+  onRouletteSelection(name.value, selectedCheese);
 }
+
+
+function reset() {
+  totalSpinDegrees = 0;
+  roulette.value.style.transition = "transform ease-in-out 0.1s"
+  roulette.value.style.transform = 'rotate(0deg)';
+}
+
+
 
 </script>
 
@@ -68,6 +87,13 @@ function spinRoulette() {
     <img class="arrow" src="../../public/arrow.svg" alt="">
   </div>
 
+  <div class="container-tasksAssignment">
+    <input v-model="name" type="text" id="name" placeholder="Introduce tu nombre">
+    <button @click="reset" class="reset">Reiniciar</button>
+  </div>
+
+
+
 
 </template>
 
@@ -101,10 +127,6 @@ body {
   overflow: hidden;
   border-radius: 50%;
   border: solid 6px hsl(180deg 4% 24%);
-}
-
-#roulette-table {
-  transition: transform ease-in-out 2.5s;
 }
 
 .cheese-container {
@@ -204,5 +226,58 @@ body {
   top: -2px;
   left: 50%;
   transform: translate(-50%) translateY(-10px);
+}
+
+.container-tasksAssignment {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1.25rem;
+  padding: 1.25rem;
+}
+
+#name {
+  height: 3.75rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 0.125rem solid hsl(180deg 4% 24%);
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0.625rem hsl(180deg 4% 24%);
+  font-family: Questrial, sans-serif;
+  transition: all 0.3s ease;
+}
+
+#name:hover {
+  border-color: var(--rojopastel);
+  box-shadow: 0 0 0.625rem var(--rojopastel);
+  background-color: #fefefe;
+}
+
+#name:focus {
+  outline: none;
+  border-color: var(--rojopastel);
+  box-shadow: 0 0 0.625rem var(--rojopastel);
+  background-color: #fff;
+}
+
+.reset {
+  height: 3.75rem;
+  font-size: 1rem;
+  cursor: pointer;
+  color: white;
+  border-radius: 0.25rem;
+  background-color: var(--rojopastel);
+  box-shadow: 0 0 0.625rem var(--rojopastel);
+  font-family: Questrial, sans-serif;
+  border: none;
+  font-weight: bold;
+  margin-left: 1.5%;
+}
+
+.link:hover,
+button:hover {
+  background-color: white;
+  color: var(--rojopastel);
 }
 </style>

@@ -11,4 +11,8 @@ import NavBar from './components/NavBar.vue';
 
 </template>
 
-<style scoped></style>
+<style>
+html {
+  overflow: hidden;
+}
+</style>
