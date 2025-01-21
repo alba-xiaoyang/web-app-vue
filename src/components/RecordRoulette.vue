@@ -86,4 +86,22 @@ li {
   gap: 24px;
   width: 70%;
 }
+
+@media (max-width: 480px) {
+  .roulette-record {
+    width: 95%;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+}
 </style>

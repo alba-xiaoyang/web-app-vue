@@ -19,8 +19,8 @@ import RecordRoulette from '@/components/RecordRoulette.vue';
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 25px;
-  margin-left: 300px;
+  padding: 24px;
+  margin-left: 250px;
   gap: 24px;
 }
 
@@ -28,5 +28,17 @@ import RecordRoulette from '@/components/RecordRoulette.vue';
   height: 400px;
   width: 100%;
   background-color: var(--amarillopastel);
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin: 0;
+    padding: 12px;
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 70px;
+  }
 }
 </style>
