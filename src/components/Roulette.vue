@@ -32,6 +32,7 @@ function spinRoulette() {
     const selectedCheese = cheeses[cheeseGradesRoulette - 1];
 
     onRouletteSelection(name.value, selectedCheese);
+    name.value = "";
   }, 2500);
 }
 
@@ -201,11 +202,10 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%) translateY(-50%);
-}
-
-.tap:hover {
   animation: pulse 1s infinite ease-in-out alternate;
 }
+
+
 
 @keyframes pulse {
   from {

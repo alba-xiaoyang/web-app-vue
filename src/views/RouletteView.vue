@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import Roulette from '../components/Roulette.vue';
 import RecordRoulette from '../components/RecordRoulette.vue';
+import RouletteSettings from '../components/RouletteSettings.vue';
 
 const history = ref([]);
 
