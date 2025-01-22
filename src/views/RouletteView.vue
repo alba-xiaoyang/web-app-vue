@@ -6,13 +6,18 @@ import RecordRoulette from '../components/RecordRoulette.vue';
 const history = ref([]);
 
 function onRouletteSelection(username, task) {
+  const date = new Date().toLocaleDateString();
+  const time = new Date().toLocaleTimeString();
+
   history.value.push({
     username: username,
     task: task,
+    date: date,
+    time: time,
   })
-
 }
 </script>
+
 
 <template>
   <main class="container">

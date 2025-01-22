@@ -20,8 +20,8 @@ const { history } = defineProps({
             <h3 class="subtitle">{{ result.task }}</h3>
             <div class="data">
               <p>{{ result.username }}</p>
-              <p>Fecha de la tirada</p>
-              <p>Hora de la tirada</p>
+              <p>{{ result.date}}</p>
+              <p>{{result.time }}</p>
             </div>
           </div>
         </li>

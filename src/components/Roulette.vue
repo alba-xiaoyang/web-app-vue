@@ -1,6 +1,5 @@
 <script setup>
 import { useTemplateRef } from 'vue'
-import TaskForm from './TaskForm.vue';
 
 const { onRouletteSelection } = defineProps({
   onRouletteSelection: {
