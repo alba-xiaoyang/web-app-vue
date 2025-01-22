@@ -26,13 +26,13 @@ function spinRoulette() {
   roulette.value.style.transform = `rotate(-${totalSpinDegrees + completeTurnsDegrees}deg)`;
   totalSpinDegrees += completeTurnsDegrees;
 
-  const degreesRoulette = (totalSpinDegrees + circleDegreeOffset) % 360;
+  setTimeout(() => {
+    const degreesRoulette = (totalSpinDegrees + circleDegreeOffset) % 360;
+    const cheeseGradesRoulette = Math.ceil((degreesRoulette / cheeseDegreeRange));
+    const selectedCheese = cheeses[cheeseGradesRoulette - 1];
 
-  const cheeseGradesRoulette = Math.ceil((degreesRoulette / cheeseDegreeRange));
-  const selectedCheese = cheeses[cheeseGradesRoulette - 1];
-
-
-  onRouletteSelection(name.value, selectedCheese);
+    onRouletteSelection(name.value, selectedCheese);
+  }, 2500);
 }
 
 
