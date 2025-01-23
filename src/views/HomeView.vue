@@ -1,18 +1,18 @@
 <script setup>
+import CalendarComponent from '@/components/CalendarComponent.vue';
 import DoneList from '@/components/DoneList.vue';
 import TaskForm from '@/components/TaskForm.vue';
-import TheCalendar from '@/components/TheCalendar.vue';
 import UndoneList from '@/components/UndoneList.vue';
 
 </script>
 
 <template>
   <div class="container">
-    <TheCalendar/>
-    <TaskForm/>
+    <CalendarComponent />
+    <TaskForm />
     <div class="lists">
-      <DoneList/>
-      <UndoneList/>
+      <DoneList />
+      <UndoneList />
     </div>
   </div>
 
