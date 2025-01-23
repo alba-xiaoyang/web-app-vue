@@ -40,8 +40,8 @@
 
 <style scoped>
 .calendar {
-  height: 100%;
-  width: 100%;
+  height: auto;
+  width: auto;
   background-color: var(--azulclaropastel);
   display: flex;
   flex-direction: column;
@@ -81,7 +81,7 @@ li {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: auto;
+  height: 100%;
   padding: 1rem;
   font-weight: 300;
   font-size: 0.9rem;

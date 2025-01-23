@@ -1,5 +1,4 @@
 <template>
-  <NavBar />  <!-- Barra de navegación -->
   <div class="chat">
     <!-- Botón para abrir/cerrar el chat -->
     <button @click="toggleChat" class="chat-button">
@@ -23,7 +22,7 @@ import ChatComponent from "@/components/ChatComponent.vue";
 import NavBar from "@/components/NavBar.vue";
 
 export default {
-  components: { ChatComponent, NavBar },
+  components: { ChatComponent },
   data() {
     return {
       group: {}, // Información del grupo
