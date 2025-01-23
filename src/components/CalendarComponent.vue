@@ -1,7 +1,5 @@
 <template>
   <div>
-    <h1>HElko</h1>
-
     <div v-for="day in week" :key="day.id">
       <p>{{ day.day }}</p>
       <p>{{ day.id }}</p>

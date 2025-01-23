@@ -1,9 +1,4 @@
 <script setup>
-import { ref } from 'firebase/storage';
-
-
-const dateSelected = ref("")
-const today = ref(new Date().toISOString().split("T")[0]); // Establece la fecha de hoy
 
 </script>
 
@@ -13,20 +8,20 @@ const today = ref(new Date().toISOString().split("T")[0]); // Establece la fecha
     <div class="modal">
       <div class="modal-content">
         <div class="modal-header">
-          <h2 class="modal-title">Fecha de la tarea</h2>
-          <label for="modal-toggle" class="modal-close">&times;</label>
+          <h2 class="modal-title">Perfil editado!</h2>
+          <label for="modal-toggle" class="modal-close" @click="$emit('acceptDate')">&times;</label>
         </div>
         <div class="modal-body">
-          <p>Selecciona la fecha donde quieres la tarea.</p>
-          <input type="date" name="" id="" :min="today" v-model="dateSelected">
+          <p>El perfil ha sido editado con éxito.</p>
         </div>
         <div class="modal-footer">
-          <button @click="$emit('acceptDate', dateSelected)" class="btn">Aceptar</button>
+          <button @click="$emit('acceptDate')" class="btn">Aceptar</button>
         </div>
       </div>
     </div>
   </div>
 </template>
+
 
 <style>
 .papi-modal {
