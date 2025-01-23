@@ -104,7 +104,7 @@ onMounted(loadUserData);
   align-items: center;
   justify-content: center;
   padding: 24px;
-  margin-left: 250px;
+  margin-left: 125px;
 }
 
 .card-profile {

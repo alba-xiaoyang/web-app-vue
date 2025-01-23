@@ -130,6 +130,9 @@ body {
   overflow: hidden;
   border-radius: 50%;
   border: solid 6px hsl(180deg 4% 24%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .cheese-container {
@@ -234,7 +237,7 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  align-items: center;
   gap: 1.25rem;
   padding: 1.25rem;
 }

@@ -23,7 +23,7 @@ function onRouletteSelection(username, task) {
 <template>
   <main class="container">
     <div class="roulette-container">
-      <h2 class="roulette-title">Ruleta de la "suerte"</h2>
+      <h2 class="roulette-title">Ruleta</h2>
       <div class="box-container">
         <div>
           <RouletteComponent :onRouletteSelection="onRouletteSelection" />
@@ -43,11 +43,12 @@ function onRouletteSelection(username, task) {
   display: flex;
   flex-direction: row;
   width: 100%;
-  gap: 1.5rem;
+  gap: 5rem;
   padding: 0.5rem;
 }
 
 .roulette-container {
+  border: 2px solid black;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -78,5 +79,6 @@ function onRouletteSelection(username, task) {
   height: 100%;
   justify-content: flex-end;
   align-items: flex-start;
+  border: 2px solid black;
 }
 </style>

@@ -36,6 +36,8 @@ const { history } = defineProps({
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   overflow: hidden;
   background-color: rgb(255, 220, 156, 0.3);
   border-radius: 12px;

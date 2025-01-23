@@ -25,7 +25,7 @@ import UndoneList from '@/components/UndoneList.vue';
   height: auto;
   display: flex;
   flex-direction: column;
-  margin-left: 250px;
+  margin-left: 125px;
   padding: 10px;
 }
 
