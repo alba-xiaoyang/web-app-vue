@@ -1,103 +1,135 @@
 <script setup>
-import { getAuth } from 'firebase/auth';
-import { onMounted, useTemplateRef } from 'vue'
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { doc, setDoc, collection, serverTimestamp, getDoc } from "firebase/firestore";
+import { db } from "../firebaseConfig";
+import { onMounted, useTemplateRef, ref } from "vue";
 
-const { onRouletteSelection } = defineProps({
-  onRouletteSelection: {
-    type: Function
-  }
-})
-
-const name = defineModel();
-
-const roulette = useTemplateRef('roulette-table')
+const roulette = useTemplateRef("roulette-table");
 
 const cheeses = ["Cocinar", "Baño", "Basura", "Cocina", "Salón", "Comprar"];
 const cheeseDegreeRange = 60;
-
 const circleDegreeOffset = cheeseDegreeRange / 2;
 
 let totalSpinDegrees = 0;
 
+const selectedDate = ref(""); // Fecha límite seleccionada
+const userName = ref(""); // Nombre del usuario logueado
+
+// Función para girar la ruleta
 function spinRoulette() {
   const degree = Math.floor(Math.random() * 360);
   const completeTurnsDegrees = 360 * 5 + degree;
-  roulette.value.style.transition = "transform ease-in-out 2.5s"
+  roulette.value.style.transition = "transform ease-in-out 2.5s";
   roulette.value.style.transform = `rotate(-${totalSpinDegrees + completeTurnsDegrees}deg)`;
   totalSpinDegrees += completeTurnsDegrees;
 
-  setTimeout(() => {
+  setTimeout(async () => {
     const degreesRoulette = (totalSpinDegrees + circleDegreeOffset) % 360;
-    const cheeseGradesRoulette = Math.ceil((degreesRoulette / cheeseDegreeRange));
+    const cheeseGradesRoulette = Math.ceil(degreesRoulette / cheeseDegreeRange);
     const selectedCheese = cheeses[cheeseGradesRoulette - 1];
 
-    onRouletteSelection(name.value, selectedCheese);
-    name.value = "";
+    // Guarda la tarea seleccionada en Firebase
+    await saveTaskToFirebase(selectedCheese, selectedDate.value);
+
+    alert(`Tarea asignada: ${selectedCheese}`);
   }, 2500);
 }
 
+// Función para guardar en Firebase
+async function saveTaskToFirebase(task, date) {
+  if (!task || !date) {
+    alert("Por favor, selecciona una fecha.");
+    return;
+  }
 
-function reset() {
-  totalSpinDegrees = 0;
-  roulette.value.style.transition = "transform ease-in-out 0.1s"
-  roulette.value.style.transform = 'rotate(0deg)';
+  const user = getAuth().currentUser;
+  if (!user) {
+    alert("Usuario no autenticado.");
+    return;
+  }
+
+  // Consultar el groupId del usuario actual
+  const userDoc = await getDoc(doc(db, "users", user.uid));
+  if (!userDoc.exists()) {
+    alert("No se encontró el grupo del usuario.");
+    return;
+  }
+
+  const groupId = userDoc.data().groupId;
+
+  try {
+    const taskData = {
+      username: user.displayName || "Usuario",
+      task,
+      date,
+      time: serverTimestamp(),
+      userId: user.uid,
+      groupId, // Agregar el groupId al documento
+    };
+
+    const taskRef = doc(collection(db, "taskAssignments"));
+    await setDoc(taskRef, taskData);
+
+    console.log("Tarea guardada exitosamente.");
+  } catch (error) {
+    console.error("Error al guardar la tarea:", error);
+  }
 }
 
+// Función para reiniciar la ruleta
+function reset() {
+  totalSpinDegrees = 0;
+  roulette.value.style.transition = "transform ease-in-out 0.1s";
+  roulette.value.style.transform = "rotate(0deg)";
+}
+
+// Obtener el nombre del usuario logueado al montar el componente
 onMounted(() => {
-  const user = getAuth().currentUser;
-  console.log(user.uid);
-})
-
+  onAuthStateChanged(getAuth(), (user) => {
+    if (user) {
+      userName.value = user.displayName || "Usuario";
+    } else {
+      console.error("No hay usuario autenticado.");
+    }
+  });
+});
 </script>
-
 
 <template>
   <div id="roulette">
     <div ref="roulette-table" id="roulette-table" class="roulette-container">
-
       <div class="roulette-container cheese-container cook-container">
         <p>Cocinar</p>
       </div>
-
-
       <div class="roulette-container cheese-container bath-container">
         <p>Baño</p>
       </div>
-
-
       <div class="roulette-container cheese-container trash-container">
         <p>Basura</p>
       </div>
-
-
       <div class="roulette-container cheese-container kitchen-container">
         <p>Cocina</p>
       </div>
-
-
       <div class="roulette-container cheese-container lounge-container">
         <p>Salón</p>
       </div>
-
-
       <div class="roulette-container cheese-container buy-container">
         <p>Comprar</p>
       </div>
-
     </div>
-    <img @click="spinRoulette" id="spinbutton" class="tap" src="../../public/tap.svg" alt="">
 
-    <img class="arrow" src="../../public/arrow.svg" alt="">
+    <!-- Botón para girar -->
+    <img @click="spinRoulette" id="spinbutton" class="tap" src="../../public/tap.svg" alt="" />
+
+    <img class="arrow" src="../../public/arrow.svg" alt="" />
   </div>
 
+  <!-- Entrada de fecha y controles -->
   <div class="container-tasksAssignment">
-    <input v-model="name" type="text" id="name" placeholder="Introduce tu nombre">
+    <p>Usuario actual: {{ userName }}</p>
+    <input type="date" v-model="selectedDate" />
     <button @click="reset" class="reset">Reiniciar</button>
   </div>
-
-
-
-
 </template>
 
 <style scoped>

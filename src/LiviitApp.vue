@@ -5,7 +5,7 @@ import { computed } from 'vue';
 
 
 const route = useRoute();
-const hideNavbarRoutes = ['chat','Login', 'Register', 'Group'];
+const hideNavbarRoutes = ['Login', 'Register', 'Group'];
 
 // Computar si el navbar debe ocultarse
 const hideNavBar = computed(() => hideNavbarRoutes.includes(route.name));

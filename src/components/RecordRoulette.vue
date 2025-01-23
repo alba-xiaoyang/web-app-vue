@@ -1,101 +1,88 @@
-<script setup>
+<script>
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { collection, query, where, onSnapshot, doc, getDoc } from "firebase/firestore";
+import { db } from "../firebaseConfig";
+import { ref, onMounted } from "vue";
 
-const { history } = defineProps({
-  history: {
-    type: Array
-  }
-})
+export default {
+  setup() {
+    const auth = getAuth();
+    const userGroupId = ref(null); // ID del grupo del usuario logueado
+    const taskHistory = ref([]); // Historial de tareas
 
+    // Cargar el historial de tareas del grupo
+    const listenToGroupTasks = () => {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          console.log("Usuario autenticado:", user);
+
+          // Obtener el groupId del usuario actual
+          getDoc(doc(db, "users", user.uid)).then((userDoc) => {
+            if (!userDoc.exists()) {
+              console.error("El usuario no pertenece a ningún grupo.");
+              return;
+            }
+
+            userGroupId.value = userDoc.data().groupId;
+
+            // Escuchar cambios en tiempo real
+            const tasksRef = collection(db, "taskAssignments");
+            const tasksQuery = query(tasksRef, where("groupId", "==", userGroupId.value));
+
+            onSnapshot(tasksQuery, (snapshot) => {
+              taskHistory.value = snapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+              }));
+              console.log("Historial actualizado:", taskHistory.value);
+            });
+          });
+        } else {
+          console.error("Usuario no autenticado.");
+        }
+      });
+    };
+
+    onMounted(() => {
+      listenToGroupTasks();
+    });
+
+    return { taskHistory };
+  },
+};
 </script>
 
-
 <template>
-  <div class="roulette-record">
-    <div class="list">
-      <h1 class="title">Historial de sorteos</h1>
-      <ul>
-
-        <li v-for="(result,index) in history" :key="index">
-          <div class="round">
-            <h3 class="subtitle">{{ result.task }}</h3>
-            <div class="data">
-              <p>{{ result.username }}</p>
-              <p>{{ result.date}}</p>
-              <p>{{result.time }}</p>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
+  <div class="task-history">
+    <h2>Historial de Tareas</h2>
+    <ul>
+      <li v-for="task in taskHistory" :key="task.id">
+        <p><strong>Tarea:</strong> {{ task.task }}</p>
+        <p><strong>Fecha:</strong> {{ task.date }}</p>
+        <p><strong>Asignado por:</strong> {{ task.username }}</p>
+      </li>
+    </ul>
   </div>
 </template>
 
 <style scoped>
-.roulette-record {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  background-color: rgb(255, 220, 156, 0.3);
-  border-radius: 12px;
+.task-history {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
 }
-
-.list {
-  flex: 1;
-  overflow-x: hidden;
-  overflow-y: auto;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 ul {
-  height: 100%;
-  width: 90%;
+  list-style-type: none;
+  padding: 0;
 }
-
 li {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  height: auto;
-  width: 100%;
-  gap: 12px;
-}
-
-.title {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 16px;
-}
-
-.round {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 48px;
-  width: 100%;
-}
-
-.subtitle {
-  font-size: 1.25rem;
-  font-weight: bold;
-  text-align: start;
-  width: 30%;
-}
-
-.data {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding-right: 5px;
-  gap: 24px;
-  width: 70%;
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
 }
 </style>
+
+
+

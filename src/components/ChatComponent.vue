@@ -106,15 +106,7 @@ export default {
 </script>
 
 <style scoped>
-.chat {
-  max-width: 600px;
-  margin: 20px auto;
-  margin-left: 35%;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: #f9f9f9;
-}
+
 
 .messages {
   max-height: 300px;

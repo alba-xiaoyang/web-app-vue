@@ -1,5 +1,5 @@
 <template>
-  <div class="chat">
+  <div class="chat-view">
     <!-- Botón para abrir/cerrar el chat -->
     <button @click="toggleChat" class="chat-button">
       {{ chatVisible ? "Cerrar Chat" : "Abrir Chat" }}
@@ -22,7 +22,7 @@ import ChatComponent from "@/components/ChatComponent.vue";
 import NavBar from "@/components/NavBar.vue";
 
 export default {
-  components: { ChatComponent },
+  components: { ChatComponent, NavBar },
   data() {
     return {
       group: {}, // Información del grupo
@@ -91,8 +91,8 @@ export default {
 }
 .chat-button {
   padding: 10px 20px;
-  margin: 20px;
-  margin-left: 50%;
+  margin-left: 640px;
+  margin-top: 30px;
   background-color: #007bff;
   color: white;
   border: none;

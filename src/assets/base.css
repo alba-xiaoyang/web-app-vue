@@ -25,6 +25,22 @@ body {
   margin-left: 260px;
 }
 
+.chat-view {
+  max-width: auto; /* Cambia el ancho según tus necesidades */
+  max-height: auto; /* Cambia el alto según tus necesidades */
+  margin-left: 500px; /* Centra el contenedor */
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.chat {
+  max-width: 100%;
+  max-height: 100%;
+}
 
 
 
