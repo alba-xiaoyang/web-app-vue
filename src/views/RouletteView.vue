@@ -1,8 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import RecordRoulette from '../components/RecordRoulette.vue';
-import RouletteComponent from '@/components/RouletteComponent.vue';
-import NavBar from '@/components/NavBar.vue';
+import RouletteComponent from '../components/RouletteComponent.vue';
 
 const history = ref([]);
 

@@ -1,27 +1,37 @@
+<script setup>
+import LiviitBar from "../components/LiviitBar.vue";
+</script>
+
+
 <template>
-  <div class="register">
-    <h1 class="title">Regístrate</h1>
-    <form @submit.prevent="handleRegister">
-      <div>
-        <label for="name">Nombre de usuario</label>
-        <input type="text" v-model="name" id="name" required />
-      </div>
-      <div>
-        <label for="email">Correo electrónico</label>
-        <input type="email" v-model="email" id="email" required />
-      </div>
-      <div>
-        <label for="password">Contraseña</label>
-        <input type="password" v-model="password" id="password" required />
-      </div>
-      <button type="submit">Registrarse</button>
-    </form>
-    <p>¿Ya tienes cuenta? <RouterLink to="/">Inicia sesión aquí</RouterLink>.</p>
+  <div class="wrapper">
+    <div class="liviit-bar">
+      <LiviitBar />
+    </div>
+    <div class="register">
+      <h1 class="title">Regístrate</h1>
+      <form @submit.prevent="handleRegister">
+        <div>
+          <label for="name">Nombre de usuario</label>
+          <input type="text" v-model="name" id="name" required />
+        </div>
+        <div>
+          <label for="email">Correo electrónico</label>
+          <input type="email" v-model="email" id="email" required />
+        </div>
+        <div>
+          <label for="password">Contraseña</label>
+          <input type="password" v-model="password" id="password" required />
+        </div>
+        <button type="submit">Registrarse</button>
+      </form>
+      <p>¿Ya tienes cuenta? <RouterLink to="/">Inicia sesión aquí</RouterLink>.</p>
+    </div>
   </div>
 </template>
 
 <script>
-import { createUserWithEmailAndPassword, updateProfile} from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db } from "../firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
 
@@ -62,6 +72,17 @@ export default {
 </script>
 
 <style scoped>
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.liviit-bar {
+  width: 100dvw;
+}
+
 .register {
   max-width: 400px;
   margin: 0 auto;
@@ -70,15 +91,19 @@ export default {
   border-radius: 8px;
   background: #f9f9f9;
 }
+
 form div {
   margin-bottom: 15px;
 }
+
 input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  padding: 5px;
 }
+
 button {
   width: 100%;
   padding: 10px;
@@ -88,15 +113,19 @@ button {
   border-radius: 4px;
   cursor: pointer;
 }
+
 button:hover {
   background: #0056b3;
 }
-div{
+
+div {
   text-align: left;
 }
+
 .title {
   text-align: center;
 }
+
 p {
   text-align: center;
 }
