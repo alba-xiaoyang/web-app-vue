@@ -2,21 +2,73 @@
 import { ref } from 'vue';
 import RecordRoulette from '../components/RecordRoulette.vue';
 import RouletteComponent from '@/components/RouletteComponent.vue';
-import NavBar from '@/components/NavBar.vue';
+import ModalRuletaComponent from '@/components/ModalRuletaComponent.vue';
+import { getAuth } from 'firebase/auth';
+import { addDoc, collection, doc, getDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '@/firebaseConfig';
 
 const history = ref([]);
+const showAlert = ref(false)
+const currentTask = ref('')
 
-function onRouletteSelection(username, task) {
-  const date = new Date().toLocaleDateString();
-  const time = new Date().toLocaleTimeString();
-
-  history.value.push({
-    username: username,
-    task: task,
-    date: date,
-    time: time,
-  })
+function onRouletteSelection(task) {
+  console.log("PAPPI LLAMA", task)
+  currentTask.value = task
+  showAlert.value = true
 }
+
+function acceptDate(data) {
+  console.log(data)
+  saveTaskToFirebase(currentTask.value, data)
+  showAlert.value = false
+}
+
+async function saveTaskToFirebase(task, date) {
+  console.log("ALERT tast", task)
+
+  if (!task || !date) {
+    console.log("ALERT", date)
+    alert("Por favor, selecciona una fecha.");
+    return;
+  }
+
+  const user = getAuth().currentUser;
+  if (!user) {
+    alert("Usuario no autenticado.");
+    return;
+  }
+
+  // Consultar el groupId del usuario actual
+  const userDoc = await getDoc(doc(db, "users", user.uid));
+  if (!userDoc.exists()) {
+    alert("No se encontró el grupo del usuario.");
+    return;
+  }
+
+  const groupId = userDoc.data().groupId;
+
+  try {
+    const taskData = {
+      username: user.displayName || "Usuario",
+      task,
+      date,
+      time: serverTimestamp(),
+      userId: user.uid,
+      groupId, // Agregar el groupId al documento
+    };
+    console.log(taskData)
+
+    const taskRef = collection(db, "taskAssignments")
+    const result = await addDoc(taskRef, taskData);
+    if (result?.id) {
+      console.log("Tarea guardada exitosamente.");
+    }
+
+  } catch (error) {
+    console.error("Error al guardar la tarea:", error);
+  }
+}
+
 </script>
 
 
@@ -26,7 +78,7 @@ function onRouletteSelection(username, task) {
       <h2 class="roulette-title">Ruleta de la "suerte"</h2>
       <div class="box-container">
         <div>
-          <RouletteComponent :onRouletteSelection="onRouletteSelection" />
+          <RouletteComponent @success="onRouletteSelection" />
         </div>
       </div>
     </div>
@@ -35,6 +87,7 @@ function onRouletteSelection(username, task) {
       <RecordRoulette :history="history" />
     </div>
 
+    <ModalRuletaComponent v-show="showAlert" @acceptDate="acceptDate" />
   </main>
 </template>
 

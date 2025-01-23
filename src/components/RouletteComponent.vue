@@ -12,8 +12,8 @@ const circleDegreeOffset = cheeseDegreeRange / 2;
 
 let totalSpinDegrees = 0;
 
-const selectedDate = ref(""); // Fecha límite seleccionada
 const userName = ref(""); // Nombre del usuario logueado
+const emit = defineEmits(['success'])
 
 // Función para girar la ruleta
 function spinRoulette() {
@@ -28,10 +28,13 @@ function spinRoulette() {
     const cheeseGradesRoulette = Math.ceil(degreesRoulette / cheeseDegreeRange);
     const selectedCheese = cheeses[cheeseGradesRoulette - 1];
 
-    // Guarda la tarea seleccionada en Firebase
-    await saveTaskToFirebase(selectedCheese, selectedDate.value);
+    // Decirle al papi que ya tengo tarea :)
+    emit("success", selectedCheese)
 
-    alert(`Tarea asignada: ${selectedCheese}`);
+    // Guarda la tarea seleccionada en Firebase
+    // await saveTaskToFirebase(selectedCheese, selectedDate.value);
+
+    // alert(`Tarea asignada: ${selectedCheese}`);
   }, 2500);
 }
 
@@ -127,7 +130,6 @@ onMounted(() => {
   <!-- Entrada de fecha y controles -->
   <div class="container-tasksAssignment">
     <p>Usuario actual: {{ userName }}</p>
-    <input type="date" v-model="selectedDate" />
     <button @click="reset" class="reset">Reiniciar</button>
   </div>
 </template>
