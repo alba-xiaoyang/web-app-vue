@@ -1,5 +1,4 @@
 <script setup>
-import NavBar from "@/components/NavBar.vue";
 import { ref, onMounted } from "vue";
 import { auth, db } from "../firebaseConfig";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
@@ -62,7 +61,6 @@ onMounted(loadUserData);
 </script>
 
 <template>
-  <NavBar />
   <div class="container">
     <div class="card-profile">
       <div class="card-header">

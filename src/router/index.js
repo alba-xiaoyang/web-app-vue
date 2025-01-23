@@ -6,6 +6,7 @@ import GroupView from '@/views/GroupView.vue'
 import ChatComponent from '@/views/ChatView.vue'
 import { auth } from '@/firebaseConfig'
 import ProfileView from '@/views/ProfileView.vue'
+import RouletteView from '@/views/RouletteView.vue'
 
 const routes = [
   { path: '/', name: 'Login', component: LoginView },
@@ -14,6 +15,7 @@ const routes = [
   { path: '/home', name: 'Home', component: HomeView },
   { path: '/chat', name: 'chat', component: ChatComponent},
   { path: '/profile', name: 'Profile', component: ProfileView},
+  { path: '/roulette', name: 'roulette', component: RouletteView}
 ];
 
 const router = createRouter({
