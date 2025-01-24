@@ -10,6 +10,7 @@
             {{ getDayOfTheWeekName(day.date) }}
           </p>
           <p class="day-number">{{ day.day }}</p>
+          <p class="month-name">{{ getMonthName(day.date) }}</p>
         </div>
       </div>
 
@@ -72,6 +73,10 @@ export default {
       const name = date.toLocaleDateString('es-ES', { weekday: 'long' });
 
       return name.charAt(0).toUpperCase() + name.slice(1)
+    },
+    getMonthName(date) {
+      const name = date.toLocaleDateString('es-ES', { month: 'long' });
+      return name.charAt(0).toUpperCase() + name.slice(1);
     }
   }
 }
@@ -160,5 +165,11 @@ button {
 button:hover {
   background-color: var(--azulclaropastel);
   color: black;
+}
+
+.month-name {
+  font-size: 0.875rem;
+  color: #888;
+  margin-top: 2px;
 }
 </style>
