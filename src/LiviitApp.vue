@@ -14,7 +14,7 @@ const hideNavBar = computed(() => hideNavbarRoutes.includes(route.name));
   <meta charset="UTF-8">
 
   <div id="app">
-    <main class="papi">
+    <main :class="!hideNavBar ? 'papi' : ''">
       <NavBar v-if="!hideNavBar" />
       <RouterView />
     </main>
