@@ -1,11 +1,10 @@
 <script>
 import { auth } from '@/firebaseConfig';
 import { signOut } from 'firebase/auth';
-import { RouterLink } from 'vue-router';
 
 
 export default {
-methods: {
+  methods: {
     async handleLogout() {
       try {
         await signOut(auth); // Cerrar sesión
@@ -19,7 +18,7 @@ methods: {
 
 </script>
 <template>
-<nav>
+  <nav>
     <div class="nav-header">
       <button>
         <RouterLink to="/profile" id="profile" class="css-routerLink">
@@ -45,13 +44,13 @@ methods: {
         <RouterLink to="/chat" id="chat" class="css-routerLink">
           <img src="/src/components/images/burbuja-de-dialogo (1).png" alt="Chat">
           <h3>Chat</h3>
-      </RouterLink>
-    </button>
+        </RouterLink>
+      </button>
     </div>
     <div class="nav-footer">
       <button @click="handleLogout" to="/" id="logout" class="css-routerLink">
-          <img src="/src/components/images/cerrar-sesion.png" alt="Cerrar sesión">
-          <h3>Cerrar sesión</h3>
+        <img src="/src/components/images/cerrar-sesion.png" alt="Cerrar sesión">
+        <h3>Cerrar sesión</h3>
       </button>
     </div>
   </nav>
@@ -61,11 +60,8 @@ methods: {
 
 <style scoped>
 nav {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 250px;
-  height: 100%;
+  height: 100dvh;
   background-color: var(--rojopastel);
   display: flex;
   flex-direction: column;
@@ -75,7 +71,7 @@ nav {
   font-family: Questrial, sans-serif;
   gap: 60px;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  overflow-y: auto;
 }
 
 .nav-header,
@@ -218,4 +214,3 @@ button:hover img {
   }
 }
 </style>
-

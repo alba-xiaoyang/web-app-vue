@@ -1,8 +1,7 @@
 <script setup>
-import CalendarComponent from '@/components/CalendarComponent.vue';
-import DoneList from '@/components/DoneList.vue';
-import UndoneList from '@/components/UndoneList.vue';
-
+import CalendarComponent from '@/components/CalendarComponent.vue'
+import DoneList from '@/components/DoneList.vue'
+import UndoneList from '@/components/UndoneList.vue'
 </script>
 
 <template>
@@ -13,18 +12,16 @@ import UndoneList from '@/components/UndoneList.vue';
       <UndoneList />
     </div>
   </div>
-
-
 </template>
 
 <style scoped>
 .container {
-  width: 100%;
-  height: auto;
+  width: calc(100% - 250px);
+  max-height: 100dvh;
   display: flex;
   flex-direction: column;
-  margin-left: 250px;
   padding: 10px;
+  overflow-y: auto;
 }
 
 .lists {
@@ -32,7 +29,7 @@ import UndoneList from '@/components/UndoneList.vue';
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 1rem;
   padding-top: 10px;
 }

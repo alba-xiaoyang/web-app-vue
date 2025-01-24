@@ -11,18 +11,21 @@ const hideNavBar = computed(() => hideNavbarRoutes.includes(route.name));
 </script>
 
 <template>
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
 
   <div id="app">
-    <main>
-      <NavBar v-if ="!hideNavBar"/>
-      <RouterView/>
+    <main class="papi">
+      <NavBar v-if="!hideNavBar" />
+      <RouterView />
     </main>
   </div>
 </template>
 
 <style scoped>
-
-
-
+.papi {
+  display: flex;
+  align-items: stretch;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
 </style>
