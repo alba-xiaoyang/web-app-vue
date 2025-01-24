@@ -3,8 +3,14 @@
     <button class="btn-week" v-on:click="prevWeek">←</button>
 
     <div class="calendar-day" v-for="day in week" :key="day.id">
-      <p class="day-title">{{ day.day }}</p>
-      <p>Comida</p>
+      <p class="day-title">{{ day.day }}/ {{ day.month }}</p>
+      <p>comida</p>
+      <input
+        type="checkbox"
+        class="isdone-checkbox"
+        v-model="day.isDone"
+        @change="toggleCompletion(task)"
+        />
     </div>
 
     <button class="btn-week" v-on:click="nextWeek">→</button>
@@ -34,12 +40,47 @@
   border-radius: 8px;
   margin: 4px;
   padding: 12px;
+  position: relative; /* Para posicionar el checkbox */
+}
+
+.day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .day-title {
   font-size: 42px;
   line-height: normal;
   font-weight: bold;
+}
+
+.isdone-checkbox {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.isdone-checkbox:checked {
+  background-color: green;
+  border-color: green;
+}
+
+.isdone-checkbox:checked::after {
+  content: "✓";
+  color: white;
+  font-weight: bold;
+  display: block;
 }
 </style>
 
@@ -89,6 +130,10 @@ export default {
       this.currentWeek--;
       this.week = this.getWeekDays(this.currentWeek)
     }
-  }
+  },
+  toggleCompletion(day) {
+      console.log(`Día ${day.day}/${day.month} completado: ${day.completed}`);
+      // Aquí puedes añadir lógica para guardar el estado del checkbox en una base de datos
+    },
 }
 </script>
