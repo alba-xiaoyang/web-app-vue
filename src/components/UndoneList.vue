@@ -6,8 +6,7 @@
         <div class="task">
           <h3 class="subtitle">{{task.task}}</h3>
           <div class="data">
-            <p>{{task.user}}</p>
-            <p>{{ task.date }}</p>
+            <p><strong>Fecha:</strong> {{ task.date }}</p>
           </div>
         </div>
         <button class="botton-done" @click="markAsDone(task.id)">Hecho</button>
@@ -21,7 +20,6 @@ import { onAuthStateChanged } from "firebase/auth";
 import { db, auth } from "../firebaseConfig";
 import { collection, doc, getDoc, onSnapshot, orderBy, query, updateDoc, where } from "firebase/firestore";
 
-
 export default {
   name: "UndoneList",
   data() {
@@ -29,7 +27,6 @@ export default {
       tasksUndone: [],
     };
   },
-
 
   methods: {
     async markAsDone(taskId) {
@@ -58,9 +55,7 @@ export default {
 
             // Escuchar cambios en tiempo real
             const tasksRef = collection(db, "taskAssignments");
-            const tasksQuery = query(tasksRef, where("groupId", "==", groupId), orderBy("date"));
-
-
+            const tasksQuery = query(tasksRef, where("groupId", "==", groupId), where("userId", "==", user.uid), orderBy("date"));
 
             onSnapshot(tasksQuery, (snapshot) => {
               this.tasksUndone = snapshot.docs.map((doc) => ({
@@ -97,21 +92,21 @@ export default {
   }
 
   .title {
-    font-size: 28px;
-    font-weight: 500;
-    color: var(--azulclaropastel);
+    font-size: 30px;
+    font-weight: 800;
+    color: rgb(59, 51, 51);
     margin-bottom: 12px;
+    margin-left: 29%;
     text-align: center;
     text-transform: uppercase;
   }
-
 
   .subtitle {
     font-size: 20px;
     font-weight: 500;
     color: black;
-    text-align: center;
-    margin-bottom: 16px;
+    text-align: left;
+    margin-bottom: 8px;
   }
 
   ul {
@@ -119,21 +114,20 @@ export default {
     padding: 0;
     margin: 0;
     list-style-type: none;
-    flex-grow: 1; /* Esto hace que la lista ocupe el espacio restante */
-    max-height: calc(100% - 60px); /* Ajusta la altura de la lista según el espacio disponible */
-    overflow-y: auto; /* Activa el scroll vertical solo en la lista */
-    margin-bottom: 16px; /* Espacio adicional entre la lista y el botón */
+    flex-grow: 1;
+    max-height: calc(100% - 60px);
+    overflow-y: auto;
   }
 
   li {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     width: 100%;
-    padding: 8px 0;
+    padding: 12px;
     border-bottom: 1px solid var(--grisoscuropastel);
-    gap: 10px;
+    gap: 15px;
+    align-items: center;
   }
 
   li:last-child {
@@ -142,30 +136,25 @@ export default {
 
   .task {
     width: calc(100% - 70px);
-    word-wrap: break-word;
     color: var(--azuloscuropastel);
+    word-wrap: break-word;
   }
 
   .data {
     display: flex;
-    flex-direction: row;
-    width: 100%;
-    color: black;
+    flex-direction: column;
     font-size: 20px;
+    color: black;
+    margin-bottom: 8px;
   }
 
-  .data span {
-    display: inline-block;
-    margin-left: 8px;
+  .data p {
+    margin: 5px 0;
   }
 
   button {
     height: 45px;
-    width: 140px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    width: 120px;
     background-color: var(--verdepastel);
     color: white;
     border: none;
@@ -173,7 +162,6 @@ export default {
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    margin-top: 12px;
     transition: all 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
@@ -189,27 +177,21 @@ export default {
     .list-task-undone {
       width: 90%;
       margin: 0 auto;
-      padding: 12px;
-      border-radius: 10px;
-      height: 350px; /* Ajusta la altura según el tamaño de pantalla */
+      height: 350px;
     }
 
     .title {
       font-size: 24px;
-      text-align: center;
       margin-bottom: 10px;
     }
 
     .subtitle {
       font-size: 18px;
-      text-align: center;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
     .data {
-      flex-direction: column;
-      gap: 6px;
-      align-items: center;
+      font-size: 14px;
     }
 
     button {
@@ -219,5 +201,6 @@ export default {
     }
   }
 </style>
+
 
 

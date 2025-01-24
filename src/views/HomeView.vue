@@ -32,7 +32,7 @@ import UndoneList from '@/components/UndoneList.vue';
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1rem;
   padding-top: 10px;
 }

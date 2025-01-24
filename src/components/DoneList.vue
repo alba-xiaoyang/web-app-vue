@@ -2,49 +2,79 @@
   <div class="list-task-done">
     <h1 class="title">Tareas terminadas</h1>
     <ul>
-      <li>
+      <li v-for="task in tasksDone" :key="task.id">
         <div class="task">
-          <h3 class="subtitle">Tarea 1</h3>
+          <h3 class="subtitle">{{task.task}}</h3>
           <div class="data">
-            <p>Juan Pérez</p>
-            <p>20/01/2025</p>
+            <p>{{task.user}}</p>
+            <p>{{ task.date }}</p>
           </div>
         </div>
-        <button class="botton-undone">Sin hacer</button>
-      </li>
-      <li>
-        <div class="task">
-          <h3 class="subtitle">Tarea 1</h3>
-          <div class="data">
-            <p>Juan Pérez</p>
-            <p>20/01/2025</p>
-          </div>
-        </div>
-        <button class="botton-undone">Sin hacer</button>
-      </li>
-      <li>
-        <div class="task">
-          <h3 class="subtitle">Tarea 1</h3>
-          <div class="data">
-            <p>Juan Pérez</p>
-            <p>20/01/2025</p>
-          </div>
-        </div>
-        <button class="botton-undone">Sin hacer</button>
-      </li>
-      <li>
-        <div class="task">
-          <h3 class="subtitle">Tarea 1</h3>
-          <div class="data">
-            <p>Juan Pérez</p>
-            <p>20/01/2025</p>
-          </div>
-        </div>
-        <button class="botton-undone">Sin hacer</button>
+        <button class="botton-undone" @click="markAsUndone(task.id)">Sin hacer</button>
       </li>
     </ul>
   </div>
-  </template>
+</template>
+
+<script>
+import { onAuthStateChanged } from "firebase/auth";
+import { db, auth } from "../firebaseConfig";
+import { collection, doc, getDoc, onSnapshot, orderBy, query, updateDoc, where } from "firebase/firestore";
+
+export default {
+  name: "DoneList",
+  data() {
+    return {
+      tasksDone: [],
+    };
+  },
+
+  methods: {
+    async markAsUndone(taskId) {
+      console.log("Marcar tarea como sin hacer:", taskId);
+      const ref = doc(db, "taskAssignments", taskId);
+
+      // Cambiar el estado de la tarea a 'Sin hacer' (isDone: false)
+      await updateDoc(ref, {
+        isDone: false
+      });
+    },
+  },
+
+  mounted() {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log("Usuario autenticado:", user);
+
+        // Obtener el groupId del usuario actual
+        getDoc(doc(db, "users", user.uid)).then((userDoc) => {
+          if (!userDoc.exists()) {
+            console.error("El usuario no pertenece a ningún grupo.");
+            return;
+          }
+
+          const groupId = userDoc.data().groupId;
+
+          // Escuchar cambios en tiempo real para las tareas hechas (isDone: true)
+          const tasksRef = collection(db, "taskAssignments");
+          const tasksQuery = query(tasksRef, where("groupId", "==", groupId), where("isDone", "==", true), orderBy("date"));
+
+          onSnapshot(tasksQuery, (snapshot) => {
+            this.tasksDone = snapshot.docs.map((doc) => ({
+              id: doc.id,
+              ...doc.data(),
+            }));
+            console.log("Historial de tareas terminadas:", this.tasksDone);
+          });
+        });
+      } else {
+        console.error("Usuario no autenticado.");
+      }
+    });
+  },
+};
+</script>
+
 
   <style scoped>
   .list-task-done {
