@@ -52,6 +52,7 @@ async function saveTaskToFirebase(task, date) {
       username: user.displayName || "Usuario",
       task,
       date,
+      isDone: false,
       time: serverTimestamp(),
       userId: user.uid,
       groupId, // Agregar el groupId al documento
