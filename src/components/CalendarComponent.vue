@@ -1,13 +1,47 @@
 <template>
-  <div>
-    <div v-for="day in week" :key="day.id">
-      <p>{{ day.day }}</p>
-      <p>{{ day.id }}</p>
+  <div class="calendar-papi">
+    <button class="btn-week" v-on:click="prevWeek">←</button>
+
+    <div class="calendar-day" v-for="day in week" :key="day.id">
+      <p class="day-title">{{ day.day }}</p>
+      <p>Comida</p>
     </div>
 
-    <button v-on:click="nextWeek">Siguiente semana</button>
+    <button class="btn-week" v-on:click="nextWeek">→</button>
   </div>
 </template>
+
+<style>
+.calendar-papi {
+  display: flex;
+}
+
+.btn-week {
+  border: none;
+  background-color: rgb(16, 24, 30);
+  color: white;
+  border-radius: 4px;
+}
+
+.btn-week:hover {
+  background-color: blue;
+}
+
+.calendar-day {
+  text-align: center;
+  border: 1px solid #e2e2e2af;
+  width: 200px;
+  border-radius: 8px;
+  margin: 4px;
+  padding: 12px;
+}
+
+.day-title {
+  font-size: 42px;
+  line-height: normal;
+  font-weight: bold;
+}
+</style>
 
 <script>
 export default {
@@ -50,6 +84,10 @@ export default {
       console.log("nextWeek", this.currentWeek)
       this.week = this.getWeekDays(this.currentWeek)
       console.log("nextWeek week:", this.week)
+    },
+    prevWeek() {
+      this.currentWeek--;
+      this.week = this.getWeekDays(this.currentWeek)
     }
   }
 }
