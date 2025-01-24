@@ -2,11 +2,11 @@
   <div class="list-task-undone">
     <h1 class="title">Tareas por hacer</h1>
     <ul>
-      <li>
+      <li v-for="task in tasksUndone" :key="task.id">
         <div class="task">
-          <h3 class="subtitle">Tarea 1</h3>
+          <h3 class="subtitle">{{task.title}}</h3>
           <div class="data">
-            <p>Juan Pérez</p>
+            <p>{{task.user}}</p>
             <p>20/01/2025</p>
           </div>
         </div>
@@ -14,9 +14,58 @@
       </li>
     </ul>
   </div>
-  </template>
+</template>
 
-  <style>
+<script>
+import { onAuthStateChanged } from "firebase/auth";
+import { db, auth } from "../firebaseConfig";
+import { collection, doc, getDoc, onSnapshot, orderBy, query, where } from "firebase/firestore";
+
+export default {
+  name: "UndoneList",
+  data() {
+    return {
+      tasksUndone: [],
+    };
+  },
+
+  mounted() {
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+          console.log("Usuario autenticado:", user);
+
+          // Obtener el groupId del usuario actual
+          getDoc(doc(db, "users", user.uid)).then((userDoc) => {
+            if (!userDoc.exists()) {
+              console.error("El usuario no pertenece a ningún grupo.");
+              return;
+            }
+
+            const groupId = userDoc.data().groupId;
+
+            // Escuchar cambios en tiempo real
+            const tasksRef = collection(db, "taskAssignments");
+            const tasksQuery = query(tasksRef, where("groupId", "==", groupId), orderBy("date"));
+
+
+
+            onSnapshot(tasksQuery, (snapshot) => {
+              this.tasksUndone = snapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+              }));
+              console.log("Historial actualizado:", this.tasksUndone);
+            });
+          });
+        } else {
+          console.error("Usuario no autenticado.");
+        }
+      });
+  }
+}
+</script>
+
+<style>
   .list-task-undone {
     width: 40%;
     height: auto;

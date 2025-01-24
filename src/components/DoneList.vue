@@ -12,6 +12,36 @@
         </div>
         <button class="botton-undone">Sin hacer</button>
       </li>
+      <li>
+        <div class="task">
+          <h3 class="subtitle">Tarea 1</h3>
+          <div class="data">
+            <p>Juan Pérez</p>
+            <p>20/01/2025</p>
+          </div>
+        </div>
+        <button class="botton-undone">Sin hacer</button>
+      </li>
+      <li>
+        <div class="task">
+          <h3 class="subtitle">Tarea 1</h3>
+          <div class="data">
+            <p>Juan Pérez</p>
+            <p>20/01/2025</p>
+          </div>
+        </div>
+        <button class="botton-undone">Sin hacer</button>
+      </li>
+      <li>
+        <div class="task">
+          <h3 class="subtitle">Tarea 1</h3>
+          <div class="data">
+            <p>Juan Pérez</p>
+            <p>20/01/2025</p>
+          </div>
+        </div>
+        <button class="botton-undone">Sin hacer</button>
+      </li>
     </ul>
   </div>
   </template>

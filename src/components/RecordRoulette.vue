@@ -1,6 +1,6 @@
 <script>
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { collection, query, where, onSnapshot, doc, getDoc } from "firebase/firestore";
+import { collection, query, where, onSnapshot, doc, getDoc, orderBy } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import { ref, onMounted } from "vue";
 
@@ -27,7 +27,9 @@ export default {
 
             // Escuchar cambios en tiempo real
             const tasksRef = collection(db, "taskAssignments");
-            const tasksQuery = query(tasksRef, where("groupId", "==", userGroupId.value));
+            const tasksQuery = query(tasksRef, where("groupId", "==", userGroupId.value), orderBy("date"));
+
+
 
             onSnapshot(tasksQuery, (snapshot) => {
               taskHistory.value = snapshot.docs.map((doc) => ({
