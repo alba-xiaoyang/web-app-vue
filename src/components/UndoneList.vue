@@ -58,7 +58,7 @@ export default {
 
             // Escuchar cambios en tiempo real
             const tasksRef = collection(db, "taskAssignments");
-            const tasksQuery = query(tasksRef, where("groupId", "==", groupId), where("isDone", "==", false), orderBy("date"));
+            const tasksQuery = query(tasksRef, where("groupId", "==", groupId), orderBy("date"));
 
 
 
@@ -66,7 +66,7 @@ export default {
               this.tasksUndone = snapshot.docs.map((doc) => ({
                 id: doc.id,
                 ...doc.data(),
-              }));
+              })).filter(task => !task.isDone);
               console.log("Historial actualizado:", this.tasksUndone);
             });
           });
