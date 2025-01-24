@@ -1,6 +1,7 @@
 <template>
+  <LiviitComponent/>
   <div class="register">
-    <h1 class="title">Regístrate</h1>
+    <h1 class="title">Unete a Liviit</h1>
     <form @submit.prevent="handleRegister">
       <div>
         <label for="name">Nombre de usuario</label>
@@ -24,8 +25,12 @@
 import { createUserWithEmailAndPassword, updateProfile} from "firebase/auth";
 import { auth, db } from "../firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
+import LiviitComponent from "@/components/LiviitComponent.vue";
 
 export default {
+  components: {
+    LiviitComponent,
+  },
   data() {
     return {
       name: "",
@@ -112,7 +117,7 @@ input:focus {
 button {
   width: 100%;
   padding: 12px;
-  background: #308ff5;
+  background: #16cf10be;
   color: white;
   border: none;
   border-radius: 6px;
@@ -123,7 +128,7 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #029229;
   transform: translateY(-2px);
 }
 

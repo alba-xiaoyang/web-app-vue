@@ -1,6 +1,8 @@
 <template>
+  <LiviitComponent/>
   <div class="login">
-    <h1>Iniciar Sesión</h1>
+
+    <h1>Inicia Sesión</h1>
     <form @submit.prevent="handleLogin">
       <div>
         <label for="email">Correo electrónico</label>
@@ -19,8 +21,12 @@
 <script>
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebaseConfig";
+import LiviitComponent from "@/components/LiviitComponent.vue";
 
 export default {
+  components: {
+    LiviitComponent,
+  },
   data() {
     return {
       email: "",
@@ -49,38 +55,95 @@ export default {
 
 <style scoped>
 .login {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: #f9f9f9d4;
+  max-width: 450px;
+  margin: 50px auto;
+  padding: 30px;
+  border-radius: 12px;
+  background: linear-gradient(to bottom, #ffffff, #f1f5f9);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
 }
+
+h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 form div {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
+
+form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #34495e;
+  font-size: 0.9rem;
+}
+
 input {
-  width: 100%;
-  padding: 10px 0 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  width: 95%;
+  padding: 12px 15px;
+  border: 1px solid #ccd1d9;
+  border-radius: 6px;
+  background-color: #ecf0f1;
+  font-size: 1rem;
+  color: #2c3e50;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
+input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
 button {
   width: 100%;
-  padding: 15px;
-  background: #4caf50;
+  padding: 12px;
+  background: #308ff5;
   color: white;
   border: none;
   border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
 button:hover {
-  background: #347937;
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+button:active {
+  background-color: #004085;
 }
 
 .login-button {
-  font-size: 17px;
-  align-items: center;
+  font-size: 1rem;
+}
+
+p {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  text-align: center;
+  color: #7f8c8d;
+}
+
+p a {
+  color: #007bff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
 }
 </style>
+
+
 

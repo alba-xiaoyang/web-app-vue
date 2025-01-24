@@ -1,7 +1,7 @@
 <template>
   <NavBar />
   <div class="chat">
-    <h2>Chat del Grupo: {{ groupId }}</h2>
+    <h2>Chat de grupo</h2>
     <div class="messages" ref="messagesContainer">
       <div
         v-for="message in messages"
@@ -106,49 +106,105 @@ export default {
 </script>
 
 <style scoped>
+.chat {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+  background: linear-gradient(to bottom, #ffffff, #f1f5f9);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  font-family: 'Arial', sans-serif;
+  position: relative;
+}
 
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-align: center;
+}
 
 .messages {
-  max-height: 300px;
+  max-height: 400px;
   overflow-y: auto;
   margin-bottom: 20px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background: #fff;
+  padding: 15px;
+  border: 1px solid #ccd1d9;
+  border-radius: 8px;
+  background: #fdfdfd;
 }
 
 .message {
+  padding: 10px;
+  border-radius: 8px;
   margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.message p {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.message small {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.8rem;
+  color: #7f8c8d;
 }
 
 .message.mine {
   text-align: right;
+  background: #e8f5e9;
+}
+
+.message.mine p {
+  color: #2e7d32;
 }
 
 form {
   display: flex;
+  gap: 10px;
 }
 
 input {
   flex: 1;
-  padding: 10px;
-  margin-right: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 12px 15px;
+  border: 1px solid #ccd1d9;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+  outline: none;
 }
 
 button {
-  padding: 10px 20px;
-  background: #4caf50;
+  padding: 12px 20px;
+  background: #308ff5;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-  background: #45a049;
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+button:active {
+  background-color: #004085;
 }
 </style>
+
 

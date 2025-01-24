@@ -74,9 +74,13 @@ nav {
   font-size: 16px;
   font-family: Questrial, sans-serif;
   gap: 60px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
-.nav-header, .nav-center, .nav-footer {
+.nav-header,
+.nav-center,
+.nav-footer {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -87,16 +91,22 @@ nav {
 button {
   width: 100%;
   height: 75px;
-  background-color: var(--rojopastel);
+  background-color: transparent;
   color: white;
   cursor: pointer;
-  border: 0;
+  border: none;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   padding-left: 32px;
-  border-radius: 0;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px);
 }
 
 .css-routerLink {
@@ -106,6 +116,11 @@ button {
   color: white;
   text-decoration: none;
   gap: 20px;
+  transition: color 0.3s ease;
+}
+
+.css-routerLink:hover {
+  color: var(--rojoclaro);
 }
 
 .css-routerLink h3 {
@@ -115,34 +130,18 @@ button {
 }
 
 img {
-  padding-bottom: 8px;
   height: 50px;
   width: auto;
   background-color: transparent;
+  transition: transform 0.3s ease;
 }
 
-#logout img{
+button:hover img {
+  transform: scale(1.1);
+}
+
+#logout img {
   height: 40px;
-  width: auto;
-  background-color: transparent;
-}
-
-button:hover {
-  background-color: white;
-  color: black;
-  border: 0;
-  transform: translateY(-2px);
-}
-
-button:hover .css-routerLink {
-  text-decoration: none;
-  transform: translateY(-2px);
-  color: black;
-}
-
-button:hover img{
-  filter:brightness(0);
-  transition: filter 0.3s ease;
 }
 
 @media (max-width: 480px) {
@@ -153,115 +152,70 @@ button:hover img{
     left: 0;
     width: 100%;
     height: 60px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    margin: 0;
-    background-color: var(--rojopastel);
-    z-index: 1000;
-    gap: 0;
-  }
-
-  .nav-header, .nav-footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    width: 20%;
-    height: 100%;
-    padding: 0px;
-    margin: 0px;
-  }
-
-  .nav-center {
-    display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    gap: 10px;
-    width: 80%;
-    height: 100%;
-    padding: 0px;
-    margin: 0px;
+    gap: 0;
+    padding: 0;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
   }
 
   button {
-    display: flex;
     flex-direction: column;
     width: auto;
     height: 100%;
     padding: 0;
-    margin: 0;
     justify-content: center;
-    border-radius: 0;
     align-items: center;
+    border-radius: 0;
   }
 
   .css-routerLink {
-    display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 4px;
     align-items: center;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
   }
 
   .css-routerLink h3 {
-    display: none; /* Oculta el texto para solo mostrar íconos */
+    display: none;
   }
 
   img {
-    height: 20px;
-    width: auto;
-  }
-
-  #logout img{
-    height: 15px;
+    height: 24px;
     width: auto;
   }
 }
 
 @media (max-width: 480px) and (orientation: landscape) {
-  /* Modo horizontal: barra lateral */
   nav {
-    position: fixed;
-    bottom: auto;
     top: 0;
+    bottom: auto;
     left: 0;
-    width: 100px;
+    width: 80px;
     height: 100%;
     flex-direction: column;
-    justify-content: center;
   }
 
-  .nav-header, .nav-center, .nav-footer {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  .nav-header,
+  .nav-center,
+  .nav-footer {
     gap: 10px;
+    width: 100%;
   }
 
   button {
-    width: 100%;
+    padding-left: 0;
     height: 50px;
-    padding-left: 10px;
+    width: 100%;
   }
 
   .css-routerLink h3 {
-    display: none; /* Oculta el texto para solo mostrar íconos */
+    display: none;
   }
 
   img {
     height: 30px;
   }
-
-  .css-routerLink h3 {
-    display: block;
-    font-size: 12px;
-  }
 }
 </style>
+

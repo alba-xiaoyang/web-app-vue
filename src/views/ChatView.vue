@@ -83,39 +83,34 @@ export default {
 
 
 <style scoped>
-.home {
-  max-width: 600px;
-  margin: 0 auto;
+.chat-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 250px; /* Ajusta según el ancho del NavBar */
   padding: 20px;
-  text-align: center;
 }
+
 .chat-button {
   padding: 10px 20px;
-  margin-left: 640px;
-  margin-top: 30px;
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 1rem;
   cursor: pointer;
-  gap: 15px;
-  align-items: center;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
-}
-.logout-button {
-  padding: 50px 20px;
-  margin: 20px 0;
-  background-color: #ff1900;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  gap: 15px;
-}
-.logout-button:hover {
-  background-color: #c30303;
-}
 .chat-button:hover {
   background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.chat-button:active {
+  background-color: #004085;
 }
 </style>
+

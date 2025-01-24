@@ -107,33 +107,47 @@ onMounted(loadUserData);
 
 
 <style scoped>
+/* Contenedor principal */
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  padding: 24px;
-  background-color: #f4f6f8;
+  padding: 20px;
+  background: linear-gradient(135deg, #edf2f7, #e2e8f0);
+  font-family: 'Roboto', sans-serif;
 }
 
+/* Tarjeta de perfil */
 .card-profile {
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
+  margin-left: 290px;
   background: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.card-profile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Foto de perfil */
 .profile-photo {
   width: 120px;
   height: 120px;
   border-radius: 50%;
   overflow: hidden;
-  border: 4px solid #007bff;
+  border: 6px solid transparent;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  padding: 4px;
   margin-bottom: 20px;
 }
 
@@ -141,114 +155,112 @@ onMounted(loadUserData);
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 50%;
 }
 
+/* Contenido de la tarjeta */
 .card-body {
   width: 100%;
+  text-align: center;
   margin-bottom: 20px;
 }
 
 .card-body h3 {
   font-size: 1rem;
-  font-weight: bold;
-  color: #34495e;
+  font-weight: 700;
+  color: #2d3748;
   margin-bottom: 10px;
 }
 
+/* Estilo de inputs */
 input {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #dcdfe3;
-  border-radius: 8px;
-  background-color: #f9fafb;
-  color: #2c3e50;
+  width: 95%;
+  padding: 14px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  background-color: #f7fafc;
+  color: #2d3748;
   font-size: 1rem;
   margin-bottom: 16px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 input:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 6px rgba(0, 123, 255, 0.4);
+  border-color: #3182ce;
+  box-shadow: 0 0 6px rgba(49, 130, 206, 0.5);
   outline: none;
 }
 
 input[readonly] {
-  background-color: #e9ecef;
-  color: #6c757d;
+  background-color: #edf2f7;
+  color: #718096;
   cursor: not-allowed;
 }
 
 input.editable {
   background-color: #eaf4fc;
-  border: 1px solid #007bff;
+  border: 2px solid #63b3ed;
+  box-shadow: 0 0 6px rgba(99, 179, 237, 0.3);
 }
 
+/* Pie de la tarjeta */
 .card-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 100%;
+  margin-top: 20px;
 }
 
+/* Botones */
 button {
-  padding: 10px 16px;
+  padding: 12px 20px;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 600;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+button:disabled {
+  background-color: #a0aec0;
+  cursor: not-allowed;
+}
+
+/* Botón de edición */
 .edit-button {
-  background-color: #28a745;
+  background-color: #38a169;
   color: #ffffff;
 }
 
 .edit-button:hover {
-  background-color: #218838;
+  background-color: #2f855a;
   transform: translateY(-2px);
 }
 
+/* Botón de guardar */
 .save {
-  background-color: #007bff;
+  background-color: #3182ce;
   color: #ffffff;
 }
 
 .save:hover {
-  background-color: #0056b3;
+  background-color: #2b6cb0;
   transform: translateY(-2px);
 }
 
-.save:disabled {
-  background-color: #6c757d;
-  cursor: not-allowed;
-}
-
-.card-header,
-.card-body,
-.card-footer {
-  width: 100%;
-}
-
-.card-header {
-  text-align: center;
-}
-
-h3 {
-  margin: 0;
-  padding-bottom: 8px;
-  font-size: 1.2rem;
-  color: #495057;
-}
-
-.card-profile input[readonly] {
-  background: #f8f9fa;
-}
-
+/* Espaciado entre botones */
 .card-footer button + button {
   margin-left: 10px;
 }
+
+/* Títulos */
+h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #2c5282;
+}
 </style>
+
 
 

@@ -139,12 +139,12 @@ onMounted(() => {
 
 body {
   background-color: #e8e8e8;
-  margin-top: 20px;
+  margin: 0;
   padding: 0;
+  font-family: Nunito, sans-serif;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-
 }
 
 .roulette-container {
@@ -159,11 +159,13 @@ body {
 
 #roulette {
   width: 100%;
+  max-width: 400px;
   aspect-ratio: 1 / 1;
   position: relative;
   overflow: hidden;
   border-radius: 50%;
   border: solid 6px hsl(180deg 4% 24%);
+  margin-top: 20px;
 }
 
 .cheese-container {
@@ -238,7 +240,7 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%) translateY(-50%);
+  transform: translate(-50%, -50%);
   animation: pulse 1s infinite ease-in-out alternate;
 }
 
@@ -246,11 +248,10 @@ body {
 
 @keyframes pulse {
   from {
-    transform: translate(-50%) translateY(-50%) scale(1);
+    transform: translate(-50%, -50%) scale(1);
   }
-
   to {
-    transform: translate(-50%) translateY(-50%) scale(1.2);
+    transform: translate(-50%, -50%) scale(1.2);
   }
 }
 
@@ -259,18 +260,17 @@ body {
   height: 25px;
   z-index: 1;
   position: absolute;
-  top: -2px;
+  top: -10px;
   left: 50%;
-  transform: translate(-50%) translateY(-10px);
+  transform: translateX(-50%);
 }
 
 .container-tasksAssignment {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  gap: 1.25rem;
-  padding: 1.25rem;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
 }
 
 #name {
@@ -308,7 +308,9 @@ body {
   font-family: Questrial, sans-serif;
   border: none;
   font-weight: bold;
-  margin-left: 1.5%;
+  text-align: center;
+  padding: 0 1.5rem;
+  margin-top: 10px;
 }
 
 .link:hover,

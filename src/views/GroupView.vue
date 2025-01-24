@@ -1,8 +1,8 @@
 <template>
   <div class="group">
-    <h1>Crear o Unirse a un Grupo</h1>
+    <h1>Elige la mejor opción para empezar</h1>
     <div>
-      <h2>Unirse a un Grupo</h2>
+      <h2>Unirse a un grupo ya existente</h2>
       <form @submit.prevent="joinGroup">
         <label for="group-id">ID del Grupo</label>
         <input type="text" v-model="groupIdToJoin" id="group-id" required />
@@ -11,7 +11,7 @@
     </div>
 
     <div>
-      <h2>Crear un Nuevo Grupo</h2>
+      <h2>Crea un nuevo grupo</h2>
       <form @submit.prevent="createGroup">
         <label for="new-group-name">Nombre del Grupo</label>
         <input type="text" v-model="newGroupName" id="new-group-name" required />
@@ -83,28 +83,80 @@ try {
 <style scoped>
 .group {
   max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
+  margin: 50px auto;
+  padding: 30px;
+  border-radius: 12px;
+  background: linear-gradient(to bottom, #ffffff, #f1f5f9);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
 }
-form {
+
+h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #2c3e50;
+  text-align: center;
   margin-bottom: 20px;
 }
-input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+
+h2 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #34495e;
+  margin-bottom: 15px;
+  text-align: center;
 }
+
+form {
+  margin-bottom: 30px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #34495e;
+  font-size: 0.9rem;
+}
+
+input {
+  width: 95%;
+  padding: 12px 15px;
+  border: 1px solid #ccd1d9;
+  border-radius: 6px;
+  background-color: #ecf0f1;
+  font-size: 1rem;
+  color: #2c3e50;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 15px;
+}
+
+input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
 button {
-  padding: 10px;
-  background: #28a745;
+  width: 100%;
+  padding: 12px;
+  background: #ee6f6f;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
 button:hover {
-  background: #218838;
+  background-color: #f89494;
+  transform: translateY(-2px);
+}
+
+button:active {
+  background-color: #004085;
 }
 </style>
+
