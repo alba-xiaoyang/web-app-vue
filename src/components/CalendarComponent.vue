@@ -27,6 +27,7 @@
     </div>
 
     <button class="btn-week" v-on:click="nextWeek">→</button>
+
   </div>
 </template>
 
@@ -133,6 +134,8 @@ import { markTaskAsDone } from '@/utils/markTaskAsDone.js'
 import { markTaskAsUndone } from '@/utils/markTaskAsUndone.js'
 import { isSameDay } from '@/utils/isSameDay.js'
 import Spinner from '@/components/Spinner.vue'
+
+
 
 export default {
   components: { Spinner },
