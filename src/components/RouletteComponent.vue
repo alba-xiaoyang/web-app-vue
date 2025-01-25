@@ -17,7 +17,7 @@ export default {
       userName: '',
       userId: '',
       groupId: '',
-      cheeses: [],
+      cheeses: ['Cocinar', 'Baño', 'Basura', 'Cocina', 'Salón', 'Comprar'],
     }
   },
   mounted() {
