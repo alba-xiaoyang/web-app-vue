@@ -15,56 +15,67 @@
 
 <style scoped>
   header {
-background-color: var(--grisclaropastel);
-height: 150px;
-width: 100%;
-display: flex;
-flex-direction: row;
-align-items: center;
+  background-color: var(--grisclaropastel);
+  height: 150px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 0.1px 0 5px 6px rgba(1, 0, 0, 0.1);
 }
 
 header h1 {
-font-size: 100px;
-height: 150px;
-width: 20%;
-color: var(--rojopastel);
-padding-left: 50px;
-display: flex;
-flex-direction: column;
-text-align: left;
-justify-content: center;
-background-color: transparent;
+  font-size: 100px;
+  height: 150px;
+  width: 20%;
+  color: var(--rojopastel);
+  padding-left: 50px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+  background-color: transparent;
+  text-shadow:
+    -2px -2px 2px rgba(0, 0, 0, 0.4), /* Sombra superior izquierda */
+    2px 2px 2px rgba(255, 255, 255, 0.3); /* Luz inferior derecha */
 }
 
 nav {
-height: 150px;
-width: 80%;
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: center;
-background-color: transparent;
-padding-right: 16px;
+  height: 150px;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  padding-right: 16px;
 }
 
 button {
-height: 100%;
-width: 14.29%;
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: center;
-color: var(--rojopastel);
-background-color: transparent;
-font-size: 20px;
-font-family: Questrial, sans-serif;
-border: transparent;
-border-radius: 0;
+  height: 100%;
+  width: 14.29%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: var(--rojopastel);
+  background-color: transparent;
+  font-size: 20px;
+  font-family: Questrial, sans-serif;
+  border: transparent;
+  border-radius: 0;
+  text-shadow:
+    -1px -1px 1px rgba(0, 0, 0, 0.4), /* Sombra superior izquierda */
+    1px 1px 2px rgba(255, 255, 255, 0.3); /* Luz inferior derecha */
 }
 
 button:hover {
-background-color: var(--rojopastel);
-color: var(--grisclaropastel);
-cursor: pointer;
+  background-color: var(--rojopastel);
+  color: var(--grisclaropastel);
+  cursor: pointer;
+  text-shadow:
+    -2px -2px 4px rgba(0, 0, 0, 0.6), /* Sombra más profunda */
+    2px 2px 4px rgba(255, 255, 255, 0.5); /* Luz más brillante */
 }
+
 </style>

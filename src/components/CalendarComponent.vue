@@ -24,18 +24,19 @@
 
 .btn-week {
   border: none;
-  background-color: rgb(16, 24, 30);
+  background-color: rgba(62, 62, 156, 0.677);
   color: white;
   border-radius: 4px;
 }
 
 .btn-week:hover {
-  background-color: blue;
+  background-color: #263463bd;
 }
 
 .calendar-day {
+  background-color: rgba(255, 255, 255, 0.359);
   text-align: center;
-  border: 1px solid #e2e2e2af;
+  border: 1px solid #b7b3b37e;
   width: 200px;
   border-radius: 8px;
   margin: 4px;

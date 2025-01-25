@@ -62,7 +62,7 @@ export default {
 nav {
   width: 250px;
   height: 100dvh;
-  background-color: var(--rojopastel);
+  background-color: #e230309a;
   display: flex;
   flex-direction: column;
   justify-content: center;

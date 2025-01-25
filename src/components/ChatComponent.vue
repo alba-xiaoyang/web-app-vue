@@ -1,5 +1,5 @@
 <template>
-  <NavBar />
+
   <div class="chat">
     <h2>Chat de grupo</h2>
     <div class="messages" ref="messagesContainer">
@@ -29,12 +29,8 @@
 <script>
 import { collection, addDoc, onSnapshot, query, orderBy, doc, getDoc } from "firebase/firestore";
 import { auth, db } from "../firebaseConfig";
-import NavBar from "./NavBar.vue";
 
 export default {
-  components: {
-    NavBar,
-  },
   props: {
     groupId: {
       type: String,
@@ -134,6 +130,7 @@ h2 {
   border-radius: 8px;
   background: #fdfdfd;
 }
+
 
 .message {
   padding: 10px;
