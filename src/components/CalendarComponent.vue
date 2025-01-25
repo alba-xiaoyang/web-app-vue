@@ -13,7 +13,9 @@
       v-for="day in week"
       :key="day.id"
     >
-      <p class="day-title">{{ day.day }}/ {{ day.month }}</p>
+      <p class="day-title">
+        {{ day.day }}/ {{ day.month }}
+      </p>
       <div class="day-tasks">
         <p v-for="task in day.tasks" :key="task.id" class="task-title" :class="{ 'task-title__done': task.isDone }">{{ task.task }}</p>
       </div>
@@ -50,36 +52,36 @@
 .calendar-day {
   background-color: rgba(255, 255, 255, 0.359);
   text-align: center;
-
   display: flex;
   justify-content: start;
   align-items: center;
   flex-direction: column;
-
   height: 15rem;
-
   border: 1px solid var(--grisoscuropastel);
   border-radius: 8px;
   margin: 4px;
-  padding: 12px;
+  padding: 4px;
   position: relative; /* Para posicionar el checkbox */
 }
 
 .calendar-day__today {
-  background-color: var(--azuloscuropastel);
+  background-color: #4d9b9b9d;
 }
 
 .calendar-day__before {
-  background-color: var(--grisoscuropastel);
+  background-color: rgba(170, 165, 165, 0.762);
   text-decoration: line-through;
 }
 
 .day-title {
   width: 100%;
-  font-size: 2.5rem;
+  font-size: 32px;
   line-height: normal;
   font-weight: bold;
   margin: 1.5rem 3rem;
+  background-color: white;
+  border-radius: 30px;
+  opacity: 0.7;
 }
 
 .isdone-checkbox {
