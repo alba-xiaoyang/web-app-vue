@@ -70,7 +70,7 @@ export default {
           }
         } else {
           this.cheeses = ['Cocinar', 'Baño', 'Basura', 'Cocina', 'Salón', 'Comprar'];
-          this.loading = true;
+          this.loading = false;
         }
       } catch (error) {
         console.error('Error loading cheeses from Firestore:', error)
