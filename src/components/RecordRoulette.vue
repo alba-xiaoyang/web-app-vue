@@ -3,45 +3,16 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { collection, query, where, onSnapshot, doc, getDoc, orderBy } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import { ref, onMounted } from "vue";
+import { listenTasksAssignments } from '@/utils/listenTasksAssignments.js'
 
 export default {
   setup() {
-    const auth = getAuth();
-    const userGroupId = ref(null); // ID del grupo del usuario logueado
-    const taskHistory = ref([]); // Historial de tareas
+    const taskHistory = ref([]);
 
     // Cargar el historial de tareas del grupo
     const listenToGroupTasks = () => {
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          console.log("Usuario autenticado:", user);
-
-          // Obtener el groupId del usuario actual
-          getDoc(doc(db, "users", user.uid)).then((userDoc) => {
-            if (!userDoc.exists()) {
-              console.error("El usuario no pertenece a ningún grupo.");
-              return;
-            }
-
-            userGroupId.value = userDoc.data().groupId;
-
-            // Escuchar cambios en tiempo real
-            const tasksRef = collection(db, "taskAssignments");
-            const tasksQuery = query(tasksRef, where("groupId", "==", userGroupId.value), orderBy("date"));
-
-
-
-            onSnapshot(tasksQuery, (snapshot) => {
-              taskHistory.value = snapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-              }));
-              console.log("Historial actualizado:", taskHistory.value);
-            });
-          });
-        } else {
-          console.error("Usuario no autenticado.");
-        }
+      listenTasksAssignments((tasks) => {
+        taskHistory.value = tasks;
       });
     };
 
