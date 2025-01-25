@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import RecordRoulette from '../components/RecordRoulette.vue';
 import RouletteComponent from '@/components/RouletteComponent.vue';
-import ModalRuletaComponent from '@/components/ModalRuletaComponent.vue';
+import ModalRuletteComponent from '@/components/ModalRouletteComponent.vue';
 import { getAuth } from 'firebase/auth';
 import { addDoc, collection, doc, getDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/firebaseConfig';
@@ -12,22 +12,18 @@ const showAlert = ref(false)
 const currentTask = ref('')
 
 function onRouletteSelection(task) {
-  console.log("PAPPI LLAMA", task)
   currentTask.value = task
   showAlert.value = true
 }
 
 function acceptDate(data) {
-  console.log(data)
   saveTaskToFirebase(currentTask.value, data)
   showAlert.value = false
 }
 
 async function saveTaskToFirebase(task, date) {
-  console.log("ALERT tast", task)
 
   if (!task || !date) {
-    console.log("ALERT", date)
     alert("Por favor, selecciona una fecha.");
     return;
   }
@@ -74,9 +70,12 @@ async function saveTaskToFirebase(task, date) {
 
 
 <template>
-  <main class="container">
+  <main class="container animate-appear">
     <div class="roulette-container">
-      <h2 class="roulette-title">Ruleta de la "suerte"</h2>
+      <div>
+        <h2 class="roulette-title">Ruleta de la "suerte"</h2>
+        <p>Puedes cambiar la tarea de cada quesito haciendo click 🧀</p>
+      </div>
       <div class="box-container">
         <div>
           <RouletteComponent @success="onRouletteSelection" />
@@ -88,7 +87,7 @@ async function saveTaskToFirebase(task, date) {
       <RecordRoulette :history="history" />
     </div>
 
-    <ModalRuletaComponent v-show="showAlert" @acceptDate="acceptDate" />
+    <ModalRuletteComponent v-show="showAlert" @acceptDate="acceptDate" />
   </main>
 </template>
 
@@ -123,8 +122,6 @@ async function saveTaskToFirebase(task, date) {
   max-width: 20rem;
   justify-content: space-between;
 }
-
-
 
 .box-RecordRoulette {
   display: flex;

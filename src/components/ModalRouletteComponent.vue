@@ -1,15 +1,14 @@
 <script setup>
 import { ref } from 'firebase/storage';
 
-
 const dateSelected = ref("")
-const today = ref(new Date().toISOString().split("T")[0]); // Establece la fecha de hoy
+const today = ref(new Date().toISOString().split("T")[0]);
 
 </script>
 
 
 <template>
-  <div class="papi-modal">
+  <div class="modal-container">
     <div class="modal">
       <div class="modal-content">
         <div class="modal-header">
@@ -29,7 +28,7 @@ const today = ref(new Date().toISOString().split("T")[0]); // Establece la fecha
 </template>
 
 <style>
-.papi-modal {
+.modal-container {
   background-color: #f3f4f6;
   display: flex;
   justify-content: center;

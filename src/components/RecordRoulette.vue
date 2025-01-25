@@ -1,45 +1,55 @@
 <script>
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { collection, query, where, onSnapshot, doc, getDoc, orderBy } from "firebase/firestore";
-import { db } from "../firebaseConfig";
-import { ref, onMounted } from "vue";
 import { listenTasksAssignments } from '@/utils/listenTasksAssignments.js'
+import Spinner from '@/components/Spinner.vue'
 
 export default {
-  setup() {
-    const taskHistory = ref([]);
-
-    // Cargar el historial de tareas del grupo
-    const listenToGroupTasks = () => {
-      listenTasksAssignments((tasks) => {
-        taskHistory.value = tasks;
-      });
-    };
-
-    onMounted(() => {
-      listenToGroupTasks();
-    });
-
-    return { taskHistory };
+  components: { Spinner },
+  mounted() {
+    listenTasksAssignments((tasks) => {
+      this.taskHistory = tasks
+      this.loading = false
+    })
   },
-};
+  data() {
+    return {
+      taskHistory: [],
+      loading: true,
+    }
+  },
+  methods: {
+    formatDate(date) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' }
+      return new Date(date).toLocaleDateString('es-ES', options)
+    },
+  },
+}
 </script>
 
 <template>
-  <div class="task-history">
-    <h2>Historial de Sorteos</h2>
-    <div class="task-container">
-      <div class="task-card" v-for="task in taskHistory" :key="task.id">
-        <p class="task-title"><strong>Tarea:</strong> {{ task.task }}</p>
-        <p><strong>Fecha:</strong> {{ task.date }}</p>
-        <p><strong>Miembro:</strong> {{ task.username }}</p>
+  <div class="container">
+    <Spinner v-if="loading" message="Cargando historial de sorteos" />
+    <div v-else class="task-history">
+      <h2>Historial de Sorteos</h2>
+      <div class="task-container">
+        <div class="task-card" v-for="task in taskHistory" :key="task.id">
+          <p class="task-title">{{ task.task }}</p>
+          <p><strong>Fecha:</strong> {{ formatDate(task.date) }}</p>
+          <p><strong>Miembro:</strong> {{ task.username }}</p>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
-
 <style scoped>
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100dvh;
+}
+
 .task-history {
   max-width: 900px;
   margin: 0 auto;
@@ -54,14 +64,13 @@ h2 {
 }
 
 .task-container {
-  max-height: 600px; /* Altura más grande para el contenedor */
-  overflow-y: auto; /* Scroll interno */
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
   width: 100%;
-  padding: 10px;
+  padding: 2rem;
   border: 1px solid #ddd;
   border-radius: 10px;
   background-color: #ffffff;
-  background-color: #f4f6f7;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -69,14 +78,17 @@ h2 {
   background: #f8f9fa;
   border: 1px solid #ddd;
   border-radius: 10px;
-  padding: 20px; /* Más espacio interno */
-  margin-bottom: 15px; /* Espaciado entre tarjetas */
+  padding: 20px;
+  margin-bottom: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  display: flex; /* Flex para estructura más amplia */
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 150px; /* Altura más grande */
+  width: 20rem;
+  height: 10rem;
 }
 
 .task-card:hover {
@@ -85,23 +97,19 @@ h2 {
 }
 
 .task-title {
-  font-size: 1.5rem; /* Fuente más grande */
+  font-size: 1.5rem;
   margin-bottom: 10px;
   color: #495057;
+  font-weight: bold;
 }
 
 p {
   margin: 6px 0;
   color: #6c757d;
-  font-size: 1.1rem; /* Texto más grande */
+  font-size: 1.1rem;
 }
 
 p strong {
   color: #343a40;
 }
-
-
 </style>
-
-
-

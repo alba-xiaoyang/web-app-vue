@@ -5,8 +5,9 @@ import UndoneList from '@/components/UndoneList.vue'
 </script>
 
 <template>
-  <div class="container">
+  <div class="container animate-appear">
     <CalendarComponent />
+
     <div class="lists">
       <DoneList />
       <UndoneList />

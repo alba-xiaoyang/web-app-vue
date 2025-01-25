@@ -1,142 +1,178 @@
-<script setup>
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { doc, setDoc, collection, serverTimestamp, getDoc } from "firebase/firestore";
-import { db } from "../firebaseConfig";
-import { onMounted, useTemplateRef, ref } from "vue";
+<script>
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore'
+import Spinner from '@/components/Spinner.vue'
 
-const roulette = useTemplateRef("roulette-table");
+const cheeseDegreeRange = 60
+const circleDegreeOffset = cheeseDegreeRange / 2
 
-const cheeses = ["Cocinar", "Baño", "Basura", "Cocina", "Salón", "Comprar"];
-const cheeseDegreeRange = 60;
-const circleDegreeOffset = cheeseDegreeRange / 2;
+let totalSpinDegrees = 0
 
-let totalSpinDegrees = 0;
-
-const userName = ref(""); // Nombre del usuario logueado
-const emit = defineEmits(['success'])
-
-// Función para girar la ruleta
-function spinRoulette() {
-  const degree = Math.floor(Math.random() * 360);
-  const completeTurnsDegrees = 360 * 5 + degree;
-  roulette.value.style.transition = "transform ease-in-out 2.5s";
-  roulette.value.style.transform = `rotate(-${totalSpinDegrees + completeTurnsDegrees}deg)`;
-  totalSpinDegrees += completeTurnsDegrees;
-
-  setTimeout(async () => {
-    const degreesRoulette = (totalSpinDegrees + circleDegreeOffset) % 360;
-    const cheeseGradesRoulette = Math.ceil(degreesRoulette / cheeseDegreeRange);
-    const selectedCheese = cheeses[cheeseGradesRoulette - 1];
-
-    // Decirle al papi que ya tengo tarea :)
-    emit("success", selectedCheese)
-
-    // Guarda la tarea seleccionada en Firebase
-    // await saveTaskToFirebase(selectedCheese, selectedDate.value);
-
-    // alert(`Tarea asignada: ${selectedCheese}`);
-  }, 2500);
-}
-
-// Función para guardar en Firebase
-async function saveTaskToFirebase(task, date) {
-  if (!task || !date) {
-    alert("Por favor, selecciona una fecha.");
-    return;
-  }
-
-  const user = getAuth().currentUser;
-  if (!user) {
-    alert("Usuario no autenticado.");
-    return;
-  }
-
-  // Consultar el groupId del usuario actual
-  const userDoc = await getDoc(doc(db, "users", user.uid));
-  if (!userDoc.exists()) {
-    alert("No se encontró el grupo del usuario.");
-    return;
-  }
-
-  const groupId = userDoc.data().groupId;
-
-  try {
-    const taskData = {
-      username: user.displayName || "Usuario",
-      task,
-      date,
-      isDone: false,
-      time: serverTimestamp(),
-      userId: user.uid,
-      groupId, // Agregar el groupId al documento
-    };
-
-    const taskRef = doc(collection(db, "taskAssignments"));
-    await setDoc(taskRef, taskData);
-
-    console.log("Tarea guardada exitosamente.");
-  } catch (error) {
-    console.error("Error al guardar la tarea:", error);
-  }
-}
-
-// Función para reiniciar la ruleta
-function reset() {
-  totalSpinDegrees = 0;
-  roulette.value.style.transition = "transform ease-in-out 0.1s";
-  roulette.value.style.transform = "rotate(0deg)";
-}
-
-// Obtener el nombre del usuario logueado al montar el componente
-onMounted(() => {
-  onAuthStateChanged(getAuth(), (user) => {
-    if (user) {
-      userName.value = user.displayName || "Usuario";
-    } else {
-      console.error("No hay usuario autenticado.");
+export default {
+  components: { Spinner },
+  emits: ['success'],
+  data() {
+    return {
+      loading: true,
+      userName: '',
+      userId: '',
+      groupId: '',
+      cheeses: ['Cocinar', 'Baño', 'Basura', 'Cocina', 'Salón', 'Comprar'],
     }
-  });
-});
+  },
+  mounted() {
+    onAuthStateChanged(getAuth(), async (user) => {
+      if (user) {
+        this.userName = user.displayName || 'Usuario'
+        this.userId = user.uid
+
+        const db = getFirestore()
+        const userDoc = await getDoc(doc(db, 'users', this.userId))
+        if (userDoc.exists()) {
+          this.groupId = userDoc.data().groupId
+          this.loadCheesesFromFirestore()
+        } else {
+          console.error('User document not found in Firestore.')
+        }
+      } else {
+        console.error('No authenticated user.')
+      }
+    })
+  },
+  methods: {
+    async saveCheesesToFirestore() {
+      if (!this.groupId) return
+
+      const db = getFirestore()
+      try {
+        await setDoc(
+          doc(db, 'groupAvailableTasks', this.groupId),
+          { cheeses: this.cheeses },
+          { merge: true },
+        )
+        console.log('Cheeses saved to Firestore successfully.')
+      } catch (error) {
+        console.error('Error saving cheeses to Firestore:', error)
+      }
+    },
+    async loadCheesesFromFirestore() {
+      if (!this.groupId) return
+
+      const db = getFirestore()
+      try {
+        const docSnap = await getDoc(doc(db, 'groupAvailableTasks', this.groupId))
+        if (docSnap.exists()) {
+          const data = docSnap.data()
+          if (data.cheeses) {
+            this.cheeses = data.cheeses
+            this.loading = false
+            console.log('Cheeses loaded from Firestore successfully.')
+          }
+        } else {
+          console.log('No tasks found for this group in Firestore.')
+        }
+      } catch (error) {
+        console.error('Error loading cheeses from Firestore:', error)
+      }
+    },
+    spinRoulette() {
+      const degree = Math.floor(Math.random() * 360)
+      const completeTurnsDegrees = 360 * 5 + degree
+      const rouletteTable = this.$refs.rouletteTable
+
+      rouletteTable.style.transition = 'transform ease-in-out 2.5s'
+      rouletteTable.style.transform = `rotate(-${totalSpinDegrees + completeTurnsDegrees}deg)`
+      totalSpinDegrees += completeTurnsDegrees
+
+      setTimeout(() => {
+        const degreesRoulette = (totalSpinDegrees + circleDegreeOffset) % 360
+        const cheeseGradesRoulette = Math.ceil(degreesRoulette / cheeseDegreeRange)
+        const selectedCheese = this.cheeses[cheeseGradesRoulette - 1]
+
+        this.$emit('success', selectedCheese)
+      }, 2500)
+    },
+    reset() {
+      totalSpinDegrees = 0
+      const rouletteTable = this.$refs.rouletteTable
+
+      rouletteTable.style.transition = 'transform ease-in-out 0.1s'
+      rouletteTable.style.transform = 'rotate(0deg)'
+    },
+  },
+}
 </script>
 
 <template>
-  <div id="roulette">
-    <div ref="roulette-table" id="roulette-table" class="roulette-container">
-      <div class="roulette-container cheese-container cook-container">
-        <p>Cocinar</p>
+  <Spinner v-if="loading" message="Cargando tus tareas disponibles" />
+
+  <div v-else>
+    <div class="animate-appear" id="roulette">
+      <div ref="rouletteTable" id="roulette-table" class="roulette-container">
+        <div class="roulette-container cheese-container cook-container">
+          <input
+            type="text"
+            class="cheese-input"
+            v-model="cheeses[0]"
+            @blur="saveCheesesToFirestore"
+          />
+        </div>
+        <div class="roulette-container cheese-container bath-container">
+          <input
+            type="text"
+            class="cheese-input"
+            v-model="cheeses[1]"
+            @blur="saveCheesesToFirestore"
+          />
+        </div>
+        <div class="roulette-container cheese-container trash-container">
+          <input
+            type="text"
+            class="cheese-input"
+            v-model="cheeses[2]"
+            @blur="saveCheesesToFirestore"
+          />
+        </div>
+        <div class="roulette-container cheese-container kitchen-container">
+          <input
+            type="text"
+            class="cheese-input"
+            v-model="cheeses[3]"
+            @blur="saveCheesesToFirestore"
+          />
+        </div>
+        <div class="roulette-container cheese-container lounge-container">
+          <input
+            type="text"
+            class="cheese-input"
+            v-model="cheeses[4]"
+            @blur="saveCheesesToFirestore"
+          />
+        </div>
+        <div class="roulette-container cheese-container buy-container">
+          <input
+            type="text"
+            class="cheese-input"
+            v-model="cheeses[5]"
+            @blur="saveCheesesToFirestore"
+          />
+        </div>
       </div>
-      <div class="roulette-container cheese-container bath-container">
-        <p>Baño</p>
-      </div>
-      <div class="roulette-container cheese-container trash-container">
-        <p>Basura</p>
-      </div>
-      <div class="roulette-container cheese-container kitchen-container">
-        <p>Cocina</p>
-      </div>
-      <div class="roulette-container cheese-container lounge-container">
-        <p>Salón</p>
-      </div>
-      <div class="roulette-container cheese-container buy-container">
-        <p>Comprar</p>
-      </div>
+
+      <img @click="spinRoulette" id="spinbutton" class="tap" src="../../public/tap.svg" alt="" />
+
+      <img class="arrow" src="../../public/arrow.svg" alt="" />
     </div>
 
-    <!-- Botón para girar -->
-    <img @click="spinRoulette" id="spinbutton" class="tap" src="../../public/tap.svg" alt="" />
-
-    <img class="arrow" src="../../public/arrow.svg" alt="" />
-  </div>
-
-  <!-- Entrada de fecha y controles -->
-  <div class="container-tasksAssignment">
-    <p>Usuario actual: {{ userName }}</p>
-    <button @click="reset" class="reset">Reiniciar</button>
+    <div class="container-tasksAssignment">
+      <p>Usuario actual: {{ userName }}</p>
+      <button @click="reset" class="reset">Reiniciar</button>
+    </div>
   </div>
 </template>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 body {
   background-color: #e8e8e8;
@@ -177,60 +213,63 @@ body {
   font-weight: bold;
 }
 
-.cheese-container>p {
+.cheese-container > .cheese-input {
   writing-mode: vertical-lr;
+  max-height: 5rem;
+  font-size: 1rem;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+}
+
+.cheese-container > .cheese-input:focus {
+  outline: none;
 }
 
 .cook-container {
-  background-image: linear-gradient(hsl(152.14deg 40% 35%), hsl(152.14deg 40% 70%));
+  background-image: linear-gradient(hsl(152.14deg 40% 50%), hsl(152.14deg 40% 70%));
   clip-path: polygon(100% 0, 50% 100%, 0% 0%);
   transform: translateY(-50%);
   transform-origin: bottom;
-
 }
 
 .bath-container {
-  background-image: linear-gradient(hsl(185.29deg 40% 35%), hsl(185.29deg 40% 70%));
+  background-image: linear-gradient(hsl(185.29deg 40% 50%), hsl(185.29deg 40% 70%));
   clip-path: polygon(100% 0, 50% 100%, 0% 0%);
   transform: translateY(-50%) rotateZ(60deg);
   transform-origin: bottom;
-
 }
 
 .trash-container {
-  background-image: linear-gradient(hsl(198.11deg 40% 35%), hsl(198.11deg 40% 64%));
+  background-image: linear-gradient(hsl(198.11deg 40% 50%), hsl(198.11deg 40% 64%));
   background-color: #9abfcf;
   clip-path: polygon(100% 0, 50% 100%, 0% 0%);
   transform: translateY(-50%) rotateZ(120deg);
   transform-origin: bottom;
-
 }
 
 .kitchen-container {
-  background-image: linear-gradient(hsl(0deg 40% 40%), hsl(0deg 40% 70%));
+  background-image: linear-gradient(hsl(0deg 40% 55%), hsl(0deg 40% 70%));
   background-color: #ee6f6f;
   clip-path: polygon(100% 0, 50% 100%, 0% 0%);
   transform: translateY(-50%) rotateZ(180deg);
   transform-origin: bottom;
-
 }
 
 .lounge-container {
-  background-image: linear-gradient(hsl(7deg 40% 55%), hsl(7deg 40% 80%));
+  background-image: linear-gradient(hsl(7deg 40% 65%), hsl(7deg 40% 80%));
   background-color: #ffb6ad;
   clip-path: polygon(100% 0, 50% 100%, 0% 0%);
   transform: translateY(-50%) rotateZ(240deg);
   transform-origin: bottom;
-
 }
 
 .buy-container {
-  background-image: linear-gradient(hsl(39deg 40% 50%), hsl(39deg 40% 80%));
+  background-image: linear-gradient(hsl(39deg 40% 60%), hsl(39deg 40% 80%));
   background-color: #ffdc9c;
   clip-path: polygon(100% 0, 50% 100%, 0% 0%);
   transform: translateY(-50%) rotateZ(300deg);
   transform-origin: bottom;
-
 }
 
 .tap {
@@ -244,8 +283,6 @@ body {
   transform: translate(-50%, -50%);
   animation: pulse 1s infinite ease-in-out alternate;
 }
-
-
 
 @keyframes pulse {
   from {

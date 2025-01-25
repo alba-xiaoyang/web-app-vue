@@ -35,7 +35,7 @@ export default {
         </RouterLink>
       </button>
       <button>
-        <RouterLink to="/roulette" id="roulette" class="css-routerLink">
+        <RouterLink to="/roulette" class="css-routerLink">
           <img src="/src/components/images/rueda-de-la-fortuna.png" alt="Ruleta">
           <h3>Ruleta</h3>
         </RouterLink>
