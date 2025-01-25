@@ -69,7 +69,8 @@ export default {
             console.log('Cheeses loaded from Firestore successfully.')
           }
         } else {
-          console.log('No tasks found for this group in Firestore.')
+          this.cheeses = ['Cocinar', 'Baño', 'Basura', 'Cocina', 'Salón', 'Comprar'];
+          this.loading = true;
         }
       } catch (error) {
         console.error('Error loading cheeses from Firestore:', error)
@@ -110,52 +111,22 @@ export default {
     <div class="animate-appear" id="roulette">
       <div ref="rouletteTable" id="roulette-table" class="roulette-container">
         <div class="roulette-container cheese-container cook-container">
-          <input
-            type="text"
-            class="cheese-input"
-            v-model="cheeses[0]"
-            @blur="saveCheesesToFirestore"
-          />
+          <input type="text" class="cheese-input" v-model="cheeses[0]" @blur="saveCheesesToFirestore" />
         </div>
         <div class="roulette-container cheese-container bath-container">
-          <input
-            type="text"
-            class="cheese-input"
-            v-model="cheeses[1]"
-            @blur="saveCheesesToFirestore"
-          />
+          <input type="text" class="cheese-input" v-model="cheeses[1]" @blur="saveCheesesToFirestore" />
         </div>
         <div class="roulette-container cheese-container trash-container">
-          <input
-            type="text"
-            class="cheese-input"
-            v-model="cheeses[2]"
-            @blur="saveCheesesToFirestore"
-          />
+          <input type="text" class="cheese-input" v-model="cheeses[2]" @blur="saveCheesesToFirestore" />
         </div>
         <div class="roulette-container cheese-container kitchen-container">
-          <input
-            type="text"
-            class="cheese-input"
-            v-model="cheeses[3]"
-            @blur="saveCheesesToFirestore"
-          />
+          <input type="text" class="cheese-input" v-model="cheeses[3]" @blur="saveCheesesToFirestore" />
         </div>
         <div class="roulette-container cheese-container lounge-container">
-          <input
-            type="text"
-            class="cheese-input"
-            v-model="cheeses[4]"
-            @blur="saveCheesesToFirestore"
-          />
+          <input type="text" class="cheese-input" v-model="cheeses[4]" @blur="saveCheesesToFirestore" />
         </div>
         <div class="roulette-container cheese-container buy-container">
-          <input
-            type="text"
-            class="cheese-input"
-            v-model="cheeses[5]"
-            @blur="saveCheesesToFirestore"
-          />
+          <input type="text" class="cheese-input" v-model="cheeses[5]" @blur="saveCheesesToFirestore" />
         </div>
       </div>
 
@@ -213,7 +184,7 @@ body {
   font-weight: bold;
 }
 
-.cheese-container > .cheese-input {
+.cheese-container>.cheese-input {
   writing-mode: vertical-lr;
   max-height: 5rem;
   font-size: 1rem;
@@ -222,7 +193,7 @@ body {
   font-weight: bold;
 }
 
-.cheese-container > .cheese-input:focus {
+.cheese-container>.cheese-input:focus {
   outline: none;
 }
 
@@ -288,6 +259,7 @@ body {
   from {
     transform: translate(-50%, -50%) scale(1);
   }
+
   to {
     transform: translate(-50%, -50%) scale(1.2);
   }
