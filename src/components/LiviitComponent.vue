@@ -16,7 +16,7 @@
 <style scoped>
   header {
   background-color: var(--grisclaropastel);
-  height: 150px;
+  height: 100px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -25,7 +25,7 @@
 }
 
 header h1 {
-  font-size: 100px;
+  font-size: 90px;
   height: 150px;
   width: 20%;
   color: var(--rojopastel);

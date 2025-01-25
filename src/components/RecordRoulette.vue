@@ -67,18 +67,41 @@ h2 {
   max-height: calc(100vh - 200px);
   overflow-y: auto;
   width: 100%;
-  padding: 2rem;
+  padding: 1rem;
   border: 1px solid #ddd;
   border-radius: 10px;
   background-color: #ffffff;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
+.task-container {
+  overflow-y: auto; /* Habilita el desplazamiento vertical */
+  max-height: 400px; /* Ajusta la altura máxima según necesites */
+}
+
+.task-container::-webkit-scrollbar {
+  width: 5px; /* Ancho de la barra de desplazamiento */
+}
+
+.task-container::-webkit-scrollbar-thumb {
+  background: #78777796; /* Color del "thumb" (parte desplazable) */
+  border-radius: 4px;
+}
+
+.task-container::-webkit-scrollbar-thumb:hover {
+  background: #4b4646ad; /* Color del "thumb" al pasar el cursor */
+}
+
+.task-container::-webkit-scrollbar-track {
+  background: #a1a0a053; /* Fondo de la pista de la barra */
+}
+
+
 .task-card {
   background: #f8f9fa;
   border: 1px solid #ddd;
   border-radius: 10px;
-  padding: 20px;
+  padding: 15px;
   margin-bottom: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition:

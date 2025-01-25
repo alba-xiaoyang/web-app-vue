@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { collection, addDoc, onSnapshot, query, orderBy, doc, getDoc } from "firebase/firestore";
+import { collection, addDoc, onSnapshot, query, orderBy } from "firebase/firestore";
 import { auth, db } from "../firebaseConfig";
 
 export default {
@@ -43,6 +43,7 @@ export default {
       newMessage: "",
       userId: auth.currentUser?.uid || "",
       userName: auth.currentUser?.displayName || "Usuario",
+      unsubscribeMessages: null, // Guardar referencia al listener
     };
   },
   methods: {
@@ -66,46 +67,41 @@ export default {
     scrollToBottom() {
       const container = this.$refs.messagesContainer;
       if (container) {
-        container.scrollTop = container.scrollHeight; // Asegurarte de que el scroll vaya hasta el final
+        container.scrollTop = container.scrollHeight;
       }
     },
   },
   mounted() {
-    const userDocRef = doc(db, "users", this.userId);
-    getDoc(userDocRef)
-      .then((docSnap) => {
-        if (docSnap.exists()) {
-          this.userName = docSnap.data().name || "Usuario"; // Cargamos el nombre desde Firestore
-        }
-      })
-      .catch((error) => {
-        console.error("Error al obtener el nombre del usuario:", error);
-      });
-
+    // Escuchar mensajes en tiempo real
     const messagesRef = collection(db, "groups", this.groupId, "messages");
     const q = query(messagesRef, orderBy("timestamp"));
 
-    // Escucha en tiempo real para los mensajes
-    onSnapshot(q, (snapshot) => {
+    this.unsubscribeMessages = onSnapshot(q, (snapshot) => {
       this.messages = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
 
-      // Desplazar hacia abajo después de que se actualicen los mensajes
       this.$nextTick(() => {
         this.scrollToBottom();
       });
     });
   },
+  beforeUnmount() {
+    // Limpiar listeners al desmontar el componente
+    if (this.unsubscribeMessages) {
+      this.unsubscribeMessages();
+    }
+  },
 };
 </script>
 
+
 <style scoped>
 .chat {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 50px auto;
-  padding: 20px;
+  padding: 8px;
   background: linear-gradient(to bottom, #ffffff, #f1f5f9);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
@@ -122,13 +118,31 @@ h2 {
 }
 
 .messages {
-  max-height: 400px;
-  overflow-y: auto;
-  margin-bottom: 20px;
-  padding: 15px;
-  border: 1px solid #ccd1d9;
-  border-radius: 8px;
-  background: #fdfdfd;
+    max-height: 500px;
+    max-width: 100%;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccd1d9;
+    border-radius: 8px;
+    background: #fdfdfd;
+}
+
+.messages::-webkit-scrollbar {
+  width: 5px; /* Ancho de la barra de desplazamiento */
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background: #78777796; /* Color del "thumb" (parte desplazable) */
+  border-radius: 4px;
+}
+
+.messages::-webkit-scrollbar-thumb:hover {
+  background: #4b4646ad; /* Color del "thumb" al pasar el cursor */
+}
+
+.messages::-webkit-scrollbar-track {
+  background: #a1a0a053; /* Fondo de la pista de la barra */
 }
 
 
