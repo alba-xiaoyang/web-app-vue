@@ -1,3 +1,14 @@
+<script setup>
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("menu-toggle");
+  const navMenu = document.querySelector("nav");
+
+  menuToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("open"); // Agrega o quita la clase 'open' al menú
+  });
+});
+</script>
+
 <template>
 <header class="web-header">
   <div class="mobile-header">
