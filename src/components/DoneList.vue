@@ -212,7 +212,7 @@ button:active {
 
 @media (max-width: 480px) {
   .list-task-done {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     height: auto;
   }

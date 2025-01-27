@@ -116,7 +116,7 @@ onMounted(loadUserData);
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Questrial', sans-serif;
 }
 
 /* Tarjeta de perfil */
@@ -260,6 +260,7 @@ h3 {
   font-size: 1.2rem;
   color: #2c5282;
 }
+
 </style>
 
 

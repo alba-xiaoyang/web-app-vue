@@ -135,7 +135,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 7rem;
+    height: auto;
     width: 100%;
   }
 
@@ -147,7 +147,7 @@
   .calendar-day {
     width: 100%;
     max-width: 100%;
-    height: 7rem;
+    height: auto;
     display: flex;
     flex-direction: row;
   }

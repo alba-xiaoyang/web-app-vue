@@ -216,6 +216,26 @@ button:hover {
 button:active {
   background-color: #004085;
 }
+
+@media (max-width: 480px) {
+  .chat {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+
+  .messages {
+    height: 100%;
+    max-height: 600px;
+  }
+
+  form {
+    width: 90%;
+    padding-bottom: 12px;
+  }
+}
 </style>
 
 

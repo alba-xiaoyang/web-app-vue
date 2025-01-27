@@ -23,6 +23,7 @@ import UndoneList from '@/components/UndoneList.vue'
   flex-direction: column;
   padding: 10px;
   overflow-y: auto;
+  align-items: center;
 }
 
 .lists {
@@ -51,6 +52,7 @@ import UndoneList from '@/components/UndoneList.vue'
     width: 100%;
     gap: 1rem;
     padding-bottom: 70px;
+    height: auto;
   }
 }
 </style>

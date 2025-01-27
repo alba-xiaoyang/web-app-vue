@@ -65,19 +65,17 @@ async function saveTaskToFirebase(task, date) {
     console.error("Error al guardar la tarea:", error);
   }
 }
-
 </script>
-
 
 <template>
   <main class="container animate-appear">
     <div class="roulette-container">
-      <div>
+      <div class="component-1">
         <h2 class="roulette-title">Ruleta de la "suerte"</h2>
         <p>Puedes cambiar la tarea de cada quesito haciendo click 🧀</p>
       </div>
       <div class="box-container">
-        <div>
+        <div class="component-2">
           <RouletteComponent @success="onRouletteSelection" />
         </div>
       </div>
@@ -144,5 +142,48 @@ h2 {
   align-items: center;
   height: 100%;
   padding-top: 32px;
+}
+
+@media (max-width: 480px) {
+  main {
+    padding-top: 500px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container .animate-appear{
+    margin: 0px;
+    padding: 0px;
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .component-1{
+    width: 100%;
+  }
+
+  .component-1 h2{
+    padding: 12px 0px;
+  }
+
+  .roulette-container {
+    gap: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 12px;
+  }
+
+  .box-RecordRoulette {
+    width: 100%;
+    padding-bottom: 60px;
+  }
 }
 </style>

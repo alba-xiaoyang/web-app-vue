@@ -203,7 +203,7 @@ button:hover {
 
 @media (max-width: 480px) {
   .list-task-undone {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     height: auto;
   }

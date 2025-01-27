@@ -84,6 +84,19 @@ export default {
     background-color: transparent;
     border: 0px;
 }
+
+@media (max-width: 480px) {
+  .chat-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px;
+    opacity: 0px;
+  }
+}
 </style>
 
 
