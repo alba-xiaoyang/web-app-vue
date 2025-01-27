@@ -57,10 +57,12 @@
   align-items: center;
   flex-direction: column;
   height: 15rem;
+  width: 8.75rem;
   border: 1px solid var(--grisoscuropastel);
   border-radius: 8px;
   margin: 4px;
   padding: 4px;
+  padding-top: 12px;
   position: relative; /* Para posicionar el checkbox */
 }
 
@@ -127,6 +129,47 @@
 .task-title__done {
   text-decoration: line-through;
 }
+
+@media (max-width: 768px) {
+  .calendar-container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .btn-week {
+    width: auto;
+    margin: 8px 0;
+  }
+
+  .calendar-day {
+    width: 80%;
+    max-width: 75px;
+  }
+
+  .day-title {
+    font-size: 1rem;
+  }
+
+  .task-title {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .calendar-container {
+    gap: 12px;
+  }
+
+  .calendar-day {
+    height: 14rem;
+    max-width: 130px;
+  }
+
+  .day-title {
+    font-size: 1.1rem;
+  }
+}
+
 </style>
 
 <script>

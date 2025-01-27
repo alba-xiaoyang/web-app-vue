@@ -205,7 +205,7 @@ button:hover {
   .list-task-undone {
     width: 90%;
     margin: 0 auto;
-    height: 350px;
+    height: auto;
   }
 
   .title {

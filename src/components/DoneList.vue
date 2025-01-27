@@ -211,10 +211,10 @@ button:active {
 }
 
 @media (max-width: 480px) {
-  .list-task-undone {
+  .list-task-done {
     width: 90%;
     margin: 0 auto;
-    height: 350px;
+    height: auto;
   }
 
   .title {
