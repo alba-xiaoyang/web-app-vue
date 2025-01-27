@@ -146,7 +146,7 @@ h2 {
 
 @media (max-width: 480px) {
   main {
-    padding-top: 500px;
+    padding-top: 600px;
     width: 100%;
     height: auto;
     display: flex;
@@ -170,6 +170,11 @@ h2 {
 
   .component-1 h2{
     padding: 12px 0px;
+  }
+
+  .component-1 p{
+    text-align: center;
+    padding: 0px 24px;
   }
 
   .roulette-container {

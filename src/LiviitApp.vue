@@ -2,6 +2,7 @@
 import { RouterView, useRoute } from 'vue-router';
 import NavBar from './components/NavBar.vue';
 import { computed } from 'vue';
+import HeaderMobile from './views/HeaderMobile.vue';
 
 
 const route = useRoute();
@@ -16,6 +17,7 @@ const hideNavBar = computed(() => hideNavbarRoutes.includes(route.name));
 
   <div id="app">
     <main :class="!hideNavBar ? 'papi' : ''">
+      <HeaderMobile v-if="!hideNavBar" />
       <NavBar v-if="!hideNavBar" />
       <RouterView />
     </main>

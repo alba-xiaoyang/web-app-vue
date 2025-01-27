@@ -41,7 +41,8 @@ import UndoneList from '@/components/UndoneList.vue'
     padding: 20px 20px 0px 20px;
     flex-direction: column;
     align-items: center;
-    margin: 0;
+    margin: 0px;
+    margin-top: 44px;
     width: 100%;
     height: auto;
   }
@@ -51,7 +52,7 @@ import UndoneList from '@/components/UndoneList.vue'
     align-items: center;
     width: 100%;
     gap: 1rem;
-    padding-bottom: 70px;
+    padding-bottom: 30px;
     height: auto;
   }
 }

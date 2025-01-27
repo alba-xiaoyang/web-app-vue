@@ -228,7 +228,7 @@ button:active {
 
   .messages {
     height: 100%;
-    max-height: 600px;
+    max-height: 450px;
   }
 
   form {

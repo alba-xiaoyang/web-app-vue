@@ -95,6 +95,9 @@ export default {
     height: 100%;
     box-shadow: 0px;
     opacity: 0px;
+    padding: 24px;
+    margin: 0px;
+    margin-top: 60px;
   }
 }
 </style>
