@@ -99,13 +99,13 @@ export default {
 
 <style scoped>
 .chat {
-  max-width: 1200px;
-  margin: 50px auto;
+  width: 83%;
+  height: 100%;
   padding: 8px;
   background: linear-gradient(to bottom, #ffffff, #f1f5f9);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Questrial', sans-serif;
   position: relative;
 }
 
@@ -118,7 +118,7 @@ h2 {
 }
 
 .messages {
-    max-height: 500px;
+    max-height: 400px;
     max-width: 100%;
     overflow-y: auto;
     margin-bottom: 20px;

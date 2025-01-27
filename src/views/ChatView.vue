@@ -75,9 +75,9 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-width: 100%;
-    max-height: 700px;
-    margin-left: 250px;
+    width: 83%;
+    height: 100%;
+    margin-left: 0px;
     padding: 25px;
     opacity: 0.9;
     align-content: center;
