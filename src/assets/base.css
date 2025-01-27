@@ -24,7 +24,7 @@ body {
 
 body::before {
   content: '';
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -32,6 +32,7 @@ body::before {
   background-image: url('https://static.vecteezy.com/system/resources/previews/008/974/742/non_2x/fashion-stylish-templates-abstract-shapes-and-line-in-pink-pastel-colors-neutral-background-in-minimalist-style-contemporary-illustration-free-vector.jpg');
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat; /* Evita repeticiones */
   opacity: 0.3; /* Controla la opacidad de la imagen aquí */
   z-index: -1; /* Coloca el fondo detrás del contenido */
 }

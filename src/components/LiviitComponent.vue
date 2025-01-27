@@ -1,81 +1,150 @@
 <template>
-  <header class="web-header">
+<header class="web-header">
+  <div class="mobile-header">
     <h1>Liviit</h1>
-    <nav class="buttons" aria-label="Menú de navegación principal">
-        <button class="button" data-target="home">Home</button>
-        <button class="button" data-target="about">Sobre la app</button>
-        <button class="button" data-target="about-us">Sobre nosotros</button>
-        <button class="button" id="faqs">FAQS</button>
-        <button class="button" id="contact">Contacto</button>
-        <button class="button" id="login">Iniciar sesión</button>
-        <button class="button" id="registrer">Registrarse</button>
-    </nav>
+    <button id="menu-toggle" aria-label="Abrir menú">☰</button>
+  </div>
+  <nav class="buttons" aria-label="Menú de navegación principal">
+      <button class="button" data-target="home">Home</button>
+      <button class="button" data-target="about">Sobre la app</button>
+      <button class="button" data-target="about-us">Sobre nosotros</button>
+      <button class="button" id="faqs">FAQS</button>
+      <button class="button" id="contact">Contacto</button>
+      <button class="button" id="login">Iniciar sesión</button>
+      <button class="button" id="registrer">Registrarse</button>
+  </nav>
 </header>
 </template>
 
 <style scoped>
-  header {
-  background-color: var(--grisclaropastel);
-  height: 100px;
-  width: 100%;
+
+header {
+background-color: var(--grisclaropastel);
+height: 115px;
+width: 100%;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+}
+
+.mobile-header {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  box-shadow: 0.1px 0 5px 6px rgba(1, 0, 0, 0.1);
+  flex: row;
 }
 
 header h1 {
-  font-size: 90px;
-  height: 150px;
-  width: 20%;
-  color: var(--rojopastel);
-  padding-left: 50px;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  justify-content: center;
-  background-color: transparent;
-  text-shadow:
-    -2px -2px 2px rgba(0, 0, 0, 0.4), /* Sombra superior izquierda */
-    2px 2px 2px rgba(255, 255, 255, 0.3); /* Luz inferior derecha */
+font-size: 100px;
+height: 115px;
+width: 20%;
+color: var(--rojopastel);
+padding-left: 50px;
+display: flex;
+flex-direction: column;
+text-align: left;
+justify-content: center;
+background-color: transparent;
 }
 
+#menu-toggle {
+  display: none; /* Ocultar en pantallas grandes */
+}
+
+
 nav {
-  height: 150px;
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  background-color: transparent;
-  padding-right: 16px;
+height: 115px;
+width: 80%;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: flex-end;
+background-color: transparent;
 }
 
 button {
-  height: 100%;
-  width: 14.29%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  color: var(--rojopastel);
-  background-color: transparent;
-  font-size: 20px;
-  font-family: Questrial, sans-serif;
-  border: transparent;
-  border-radius: 0;
-  text-shadow:
-    -1px -1px 1px rgba(0, 0, 0, 0.4), /* Sombra superior izquierda */
-    1px 1px 2px rgba(255, 255, 255, 0.3); /* Luz inferior derecha */
+height: 100%;
+width: 200px;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+color: var(--rojopastel);
+background-color: transparent;
+font-size: 20px;
+font-family: Questrial, sans-serif;
+border: transparent;
 }
 
 button:hover {
-  background-color: var(--rojopastel);
-  color: var(--grisclaropastel);
-  cursor: pointer;
-  text-shadow:
-    -2px -2px 4px rgba(0, 0, 0, 0.6), /* Sombra más profunda */
-    2px 2px 4px rgba(255, 255, 255, 0.5); /* Luz más brillante */
+background-color: var(--rojopastel);
+color: var(--grisclaropastel);
+cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    height: 100px;
+    width: 100%;
+  }
+
+  .mobile-header {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  header h1 {
+    font-size: 40px;
+    width: 100px;
+    height: 100%;
+    text-align: center;
+    padding-left: 0;
+    margin: 0;
+  }
+
+  #menu-toggle {
+    height: 100%;
+    width: 75px;
+    display: block;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: var(--rojopastel);
+    cursor: pointer;
+  }
+
+  nav {
+    display: none;
+    width: 100%;
+    height: 350px;
+    background-color: var(--grisclaropastel);
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* Asegura que no se superponga */
+    gap: 10px;
+    padding-top: 50px;
+  }
+
+  nav.open {
+    display: flex;
+  }
+
+  .button {
+    width: 100%;
+    height: auto;
+    font-size: 18px;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .button:hover {
+    background-color: var(--rojopastel);
+    color: var(--grisclaropastel);
+  }
 }
 
 </style>

@@ -23,6 +23,12 @@ const hideNavBar = computed(() => hideNavbarRoutes.includes(route.name));
 </template>
 
 <style scoped>
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .papi {
   display: flex;
   align-items: stretch;

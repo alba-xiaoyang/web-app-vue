@@ -1,31 +1,33 @@
 <template>
   <LiviitComponent/>
   <div class="login">
-
-    <h1>Inicia Sesión</h1>
+    <h1>Iniciar sesión</h1>
     <form @submit.prevent="handleLogin">
-      <div>
+      <div class="data">
         <label for="email">Correo electrónico</label>
         <input type="email" v-model="email" id="email" required />
       </div>
-      <div>
+      <div class="data">
         <label for="password">Contraseña</label>
         <input type="password" v-model="password" id="password" required />
       </div>
-      <button type="submit" class="login-button">Iniciar Sesión</button>
+      <button type="submit" class="login-button">Iniciar sesión</button>
     </form>
     <p>¿No tienes cuenta? <RouterLink to="/register">Regístrate aquí</RouterLink>.</p>
   </div>
+  <LiviitFooter/>
 </template>
 
 <script>
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import LiviitComponent from "@/components/LiviitComponent.vue";
+import LiviitFooter from "@/components/LiviitFooter.vue";
 
 export default {
   components: {
     LiviitComponent,
+    LiviitFooter,
   },
   data() {
     return {
@@ -56,12 +58,14 @@ export default {
 <style scoped>
 .login {
   max-width: 450px;
+  width: 100%;
+  height: auto;
   margin: 50px auto;
   padding: 30px;
   border-radius: 12px;
   background: linear-gradient(to bottom, #ffffff, #f1f5f9);
   box-shadow: 0.1px 0 15px 6px rgba(1, 0, 0, 0.1);
-  font-family: 'Arial', sans-serif;
+  font-family: 'Questrial', sans-serif;
 }
 
 h1 {
@@ -70,6 +74,12 @@ h1 {
   color: #2c3e50;
   text-align: center;
   margin-bottom: 20px;
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 form div {
@@ -85,7 +95,7 @@ form label {
 }
 
 input {
-  width: 95%;
+  width: 100%;
   padding: 12px 15px;
   border: 1px solid #ccd1d9;
   border-radius: 6px;

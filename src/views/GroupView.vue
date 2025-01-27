@@ -1,4 +1,5 @@
 <template>
+  <LiviitComponent/>
   <div class="group">
     <h1>Elige la mejor opción para empezar</h1>
     <div>
@@ -21,13 +22,20 @@
       </form>
     </div>
   </div>
+  <LiviitFooter/>
 </template>
 
 <script>
 import { doc, getDoc, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import { auth, db } from "../firebaseConfig";
+import LiviitComponent from "@/components/LiviitComponent.vue";
+import LiviitFooter from "@/components/LiviitFooter.vue";
 
 export default {
+  components: {
+    LiviitComponent,
+    LiviitFooter,
+  },
   data() {
     return {
       groupIdToJoin: "",
@@ -82,13 +90,15 @@ try {
 
 <style scoped>
 .group {
-  max-width: 600px;
+  max-width: 450px;
+  width: 100%;
+  height: auto;
   margin: 50px auto;
   padding: 30px;
   border-radius: 12px;
   background: linear-gradient(to bottom, #ffffff, #f1f5f9);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-family: 'Arial', sans-serif;
+  font-family: 'Questrial', sans-serif;
 }
 
 h1 {
@@ -120,7 +130,7 @@ form label {
 }
 
 input {
-  width: 95%;
+  width: 100%;
   padding: 12px 15px;
   border: 1px solid #ccd1d9;
   border-radius: 6px;

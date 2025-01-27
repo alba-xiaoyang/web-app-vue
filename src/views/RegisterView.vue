@@ -1,17 +1,17 @@
 <template>
   <LiviitComponent/>
   <div class="register">
-    <h1 class="title">Unete a Liviit</h1>
+    <h1 class="title">Únete a Liviit</h1>
     <form @submit.prevent="handleRegister">
-      <div>
+      <div class="data">
         <label for="name">Nombre de usuario</label>
         <input type="text" v-model="name" id="name" required />
       </div>
-      <div>
+      <div class="data">
         <label for="email">Correo electrónico</label>
         <input type="email" v-model="email" id="email" required />
       </div>
-      <div>
+      <div class="data">
         <label for="password">Contraseña</label>
         <input type="password" v-model="password" id="password" required />
       </div>
@@ -19,6 +19,7 @@
     </form>
     <p>¿Ya tienes cuenta? <RouterLink to="/">Inicia sesión aquí</RouterLink>.</p>
   </div>
+  <LiviitFooter/>
 </template>
 
 <script>
@@ -26,10 +27,12 @@ import { createUserWithEmailAndPassword, updateProfile} from "firebase/auth";
 import { auth, db } from "../firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
 import LiviitComponent from "@/components/LiviitComponent.vue";
+import LiviitFooter from "@/components/LiviitFooter.vue";
 
 export default {
   components: {
     LiviitComponent,
+    LiviitFooter,
   },
   data() {
     return {
@@ -69,11 +72,14 @@ export default {
 <style scoped>
 .register {
   max-width: 450px;
+  width: 100%;
+  height: auto;
   margin: 50px auto;
   padding: 30px;
   border-radius: 12px;
   background: linear-gradient(to bottom, #ffffff, #f1f5f9);
-  box-shadow: 0.1px 0 15px 6px rgba(1, 0, 0, 0.1);  font-family: 'Arial', sans-serif;
+  box-shadow: 0.1px 0 15px 6px rgba(1, 0, 0, 0.1);
+  font-family: 'Questrial', sans-serif;
 }
 
 .title {
@@ -82,6 +88,12 @@ export default {
   color: #2c3e50;
   text-align: center;
   margin-bottom: 20px;
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 form div {
@@ -97,7 +109,7 @@ form label {
 }
 
 input {
-  width: 95%;
+  width: 100%;
   padding: 12px 15px;
   border: 1px solid #ccd1d9;
   border-radius: 6px;

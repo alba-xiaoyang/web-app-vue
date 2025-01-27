@@ -5,6 +5,7 @@
   width: auto;
   background-color: transparent;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
 }
 
