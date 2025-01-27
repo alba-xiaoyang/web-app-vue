@@ -171,7 +171,7 @@ h2 {
 }
 
 .message.mine p {
-  color: #2e7d32;
+  color: #3dab43;
 }
 
 form {
