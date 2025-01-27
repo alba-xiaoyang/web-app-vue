@@ -133,7 +133,7 @@ h2 {
 }
 
 .messages::-webkit-scrollbar-thumb {
-  background: #78777796; /* Color del "thumb" (parte desplazable) */
+  background: #96959596; /* Color del "thumb" (parte desplazable) */
   border-radius: 4px;
 }
 
