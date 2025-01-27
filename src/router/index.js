@@ -11,11 +11,11 @@ import RouletteView from '@/views/RouletteView.vue'
 const routes = [
   { path: '/', name: 'Login', component: LoginView },
   { path: '/register', name: 'Register', component: RegisterView },
-  { path: '/group', name: 'Group', component: GroupView },
-  { path: '/home', name: 'Home', component: HomeView },
-  { path: '/chat', name: 'chat', component: ChatComponent},
-  { path: '/profile', name: 'Profile', component: ProfileView},
-  { path: '/roulette', name: 'roulette', component: RouletteView}
+  { path: '/group', name: 'Group', component: GroupView, meta: {requiresAuth: true},},
+  { path: '/home', name: 'Home', component: HomeView, meta: {requiresAuth: true}, },
+  { path: '/chat', name: 'chat', component: ChatComponent, meta: {requiresAuth: true},},
+  { path: '/profile', name: 'Profile', component: ProfileView, meta: {requiresAuth: true},},
+  { path: '/roulette', name: 'roulette', component: RouletteView, meta: {requiresAuth: true},}
 ];
 
 const router = createRouter({
@@ -26,7 +26,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const user = auth.currentUser;
   if (to.meta.requiresAuth && !user) {
-    next('/login');
+    next({ path: '/' });
   } else {
     next();
   }
