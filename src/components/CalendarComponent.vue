@@ -132,18 +132,29 @@
 
 @media (max-width: 768px) {
   .calendar-container {
-    flex-direction: row;
-    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 7rem;
+    width: 100%;
   }
 
   .btn-week {
-    width: auto;
+    width: 100%;
     margin: 8px 0;
   }
 
   .calendar-day {
-    width: 80%;
-    max-width: 75px;
+    width: 100%;
+    max-width: 100%;
+    height: 7rem;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .isdone-checkbox{
+    display: flex;
+    flex-direction: row-reverse;
   }
 
   .day-title {
@@ -158,10 +169,13 @@
 @media (min-width: 768px) and (max-width: 1024px) {
   .calendar-container {
     gap: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .calendar-day {
-    height: 14rem;
+    height: 3rem;
     max-width: 130px;
   }
 

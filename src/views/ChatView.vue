@@ -81,6 +81,8 @@ export default {
     padding: 25px;
     opacity: 0.9;
     align-content: center;
+    background-color: transparent;
+    border: 0px;
 }
 </style>
 

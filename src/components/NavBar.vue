@@ -146,14 +146,25 @@ button:hover img {
     bottom: 0;
     top: auto;
     left: 0;
-    width: 100%;
+    width: 480px;
     height: 60px;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     gap: 0;
     padding: 0;
     box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-footer, .nav-header{
+    height: auto;
+    width: auto;
+    padding: 32px;
+  }
+
+  .nav-center{
+    display: flex;
+    flex-direction: row;
   }
 
   button {
@@ -164,6 +175,7 @@ button:hover img {
     justify-content: center;
     align-items: center;
     border-radius: 0;
+    margin: auto;
   }
 
   .css-routerLink {
@@ -178,6 +190,11 @@ button:hover img {
 
   img {
     height: 24px;
+    width: auto;
+  }
+
+  #logout {
+    height: 18px;
     width: auto;
   }
 }
@@ -211,6 +228,10 @@ button:hover img {
 
   img {
     height: 30px;
+  }
+
+  #logout {
+    height: 20px;
   }
 }
 </style>
