@@ -109,12 +109,13 @@ onMounted(loadUserData);
 <style scoped>
 /* Contenedor principal */
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 83%;
   height: 100vh;
-  padding: 20px;
-  background: linear-gradient(135deg, #edf2f7, #e2e8f0);
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -122,8 +123,7 @@ onMounted(loadUserData);
 .card-profile {
   width: 100%;
   max-width: 400px;
-  margin-left: 290px;
-  background: #ffffff;
+  background-color: white;
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;

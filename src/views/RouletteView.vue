@@ -91,22 +91,33 @@ async function saveTaskToFirebase(task, date) {
   </main>
 </template>
 
-<style>
-.container {
+<style scoped>
+main{
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 83%;
   gap: 1.5rem;
-  padding: 0.5rem;
+  padding: 0rem;
+}
+
+p {
+  margin: 0px;
+}
+
+h2 {
+  margin: 0px;
 }
 
 .roulette-container {
-  width: 100%;
+  width: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 2rem;
+  margin: 0px;
+  height: 100%;
+  padding-top: 32px;
 }
 
 .roulette-title {
@@ -118,6 +129,7 @@ async function saveTaskToFirebase(task, date) {
 .box-container {
   display: flex;
   flex-direction: column;
+  margin: 0px;
   width: 100%;
   max-width: 20rem;
   justify-content: space-between;
@@ -125,9 +137,12 @@ async function saveTaskToFirebase(task, date) {
 
 .box-RecordRoulette {
   display: flex;
-  width: 100%;
+  flex-direction: column;
+  width: 50%;
+  height: auto;
+  justify-content: flex-start;
+  align-items: center;
   height: 100%;
-  justify-content: flex-end;
-  align-items: flex-start;
+  padding-top: 32px;
 }
 </style>

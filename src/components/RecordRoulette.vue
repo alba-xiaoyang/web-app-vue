@@ -44,16 +44,20 @@ export default {
 <style scoped>
 .container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  height: 100dvh;
+  height: auto;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
 }
 
 .task-history {
   max-width: 900px;
   margin: 0 auto;
   padding: 20px;
+  padding-top: 0px;
 }
 
 h2 {
@@ -61,10 +65,12 @@ h2 {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
   color: #343a40;
+  padding-top: 0px;
+  margin-top: 0px;
 }
 
 .task-container {
-  max-height: calc(100vh - 200px);
+  max-height: calc(200vh - 200px);
   overflow-y: auto;
   width: 100%;
   padding: 1rem;
@@ -76,7 +82,7 @@ h2 {
 
 .task-container {
   overflow-y: auto; /* Habilita el desplazamiento vertical */
-  max-height: 400px; /* Ajusta la altura máxima según necesites */
+  max-height: 450px; /* Ajusta la altura máxima según necesites */
 }
 
 .task-container::-webkit-scrollbar {

@@ -60,7 +60,7 @@ export default {
 
 <style scoped>
 nav {
-  width: 250px;
+  width: 17%;
   height: 100dvh;
   background-color: #e230309a;
   display: flex;

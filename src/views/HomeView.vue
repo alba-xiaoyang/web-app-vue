@@ -17,7 +17,7 @@ import UndoneList from '@/components/UndoneList.vue'
 
 <style scoped>
 .container {
-  width: calc(100% - 250px);
+  width: 83%;
   max-height: 100dvh;
   display: flex;
   flex-direction: column;
