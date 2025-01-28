@@ -1,9 +1,17 @@
-<script setup>
-import { ref } from 'firebase/storage';
+<script>
+export default {
 
-const dateSelected = ref("")
-const today = ref(new Date().toISOString().split("T")[0]);
 
+  data () {
+
+  return {
+
+dateSelected : "",
+ today: new Date().toISOString().split("T")[0]
+ }
+},
+name: "modalRouletteComponent"
+}
 </script>
 
 
@@ -20,7 +28,7 @@ const today = ref(new Date().toISOString().split("T")[0]);
           <input type="date" name="" id="" :min="today" v-model="dateSelected">
         </div>
         <div class="modal-footer">
-          <button @click="$emit('acceptDate', dateSelected.value)" class="btn">Aceptar</button>
+          <button @click="$emit('acceptDate', dateSelected)" class="btn">Aceptar</button>
         </div>
       </div>
     </div>

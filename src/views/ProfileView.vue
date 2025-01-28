@@ -102,7 +102,7 @@ onMounted(loadUserData);
     </div>
   </div>
   <!-- Modal para mostrar mensaje de éxito -->
-  <ModalEditComponent v-if="showAlert" @acceptDate="handleModalClose" />
+  <ModalEditComponent v-if="showAlert" @acceptEdit="handleModalClose" />
 </template>
 
 

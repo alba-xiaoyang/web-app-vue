@@ -8,14 +8,14 @@
     <div class="modal">
       <div class="modal-content">
         <div class="modal-header">
-          <h2 class="modal-title">Perfil editado!</h2>
-          <label for="modal-toggle" class="modal-close" @click="$emit('acceptDate')">&times;</label>
+          <h2 class="modal-title">¡Perfil editado!</h2>
+          <label for="modal-toggle" class="modal-close" @click="$emit('acceptEdit')">&times;</label>
         </div>
         <div class="modal-body">
           <p>El perfil ha sido editado con éxito.</p>
         </div>
         <div class="modal-footer">
-          <button @click="$emit('acceptDate')" class="btn">Aceptar</button>
+          <button @click="$emit('acceptEdit')" class="btn">Aceptar</button>
         </div>
       </div>
     </div>
