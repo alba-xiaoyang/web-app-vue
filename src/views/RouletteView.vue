@@ -17,6 +17,7 @@ function onRouletteSelection(task) {
 }
 
 function acceptDate(data) {
+  console.log({data})
   saveTaskToFirebase(currentTask.value, data)
   showAlert.value = false
 }
