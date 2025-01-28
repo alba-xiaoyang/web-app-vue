@@ -11,11 +11,7 @@ import RouletteView from '@/views/RouletteView.vue'
 const routes = [
   { path: '/', name: 'Login', component: LoginView },
   { path: '/register', name: 'Register', component: RegisterView },
-<<<<<<< HEAD
   { path: '/group', name: 'Group', component: GroupView, meta: {requiresAuth: true},},
-=======
-  { path: '/group', name: 'Group', component: GroupView },
->>>>>>> 3c28cc8 (Commit rebase responsive)
   { path: '/home', name: 'Home', component: HomeView, meta: {requiresAuth: true}, },
   { path: '/chat', name: 'chat', component: ChatComponent, meta: {requiresAuth: true},},
   { path: '/profile', name: 'Profile', component: ProfileView, meta: {requiresAuth: true},},
