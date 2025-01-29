@@ -6,6 +6,15 @@ document.addEventListener("DOMContentLoaded", () => {
   menuToggle.addEventListener("click", () => {
     navMenu.classList.toggle("open"); // Agrega o quita la clase 'open' al menú
   });
+
+  document.querySelectorAll(".button").forEach((button) => {
+    button.addEventListener("click", () => {
+      const targetUrl = button.getAttribute("href");
+      if (targetUrl) {
+        window.location.href = targetUrl;
+      }
+    });
+  });
 });
 </script>
 
@@ -16,13 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
     <button id="menu-toggle" aria-label="Abrir menú">☰</button>
   </div>
   <nav class="buttons" aria-label="Menú de navegación principal">
-      <button class="button" data-target="home">Home</button>
-      <button class="button" data-target="about">Sobre la app</button>
-      <button class="button" data-target="about-us">Sobre nosotros</button>
-      <button class="button" id="faqs">FAQS</button>
-      <button class="button" id="contact">Contacto</button>
-      <button class="button" id="login">Iniciar sesión</button>
-      <button class="button" id="registrer">Registrarse</button>
+      <button class="button" data-target="home" href="https://livitt-landing.netlify.app/">Home</button>
+      <button class="button" data-target="about" href="https://livitt-landing.netlify.app/#about">Sobre la app</button>
+      <button class="button" data-target="about-us" href="https://livitt-landing.netlify.app/#about-us">Sobre nosotros</button>
+      <button class="button" id="faqs" href="https://livitt-landing.netlify.app/faqs/">FAQS</button>
+      <button class="button" id="contact" href="https://livitt-landing.netlify.app/contact/">Contacto</button>
+      <button class="button" id="login" href="https://livitt.netlify.app/">Iniciar sesión</button>
+      <button class="button" id="registrer" href="https://livitt.netlify.app/register">Registrarse</button>
   </nav>
 </header>
 </template>

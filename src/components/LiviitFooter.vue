@@ -13,17 +13,17 @@
       <h2 class="fast-link">Enlaces rápidos</h2>
       <ul>
         <div class="column-1">
-          <li><a href="/index.html#home">Inicio</a></li> <!-- Agregar hash para sección -->
-          <li><a href="/index.html#about">Sobre la app</a></li> <!-- Agregar hash para sección -->
-          <li><a href="/index.html#about-us">Equipo</a></li> <!-- Agregar hash para sección -->
+          <li><a href="https://livitt-landing.netlify.app/">Inicio</a></li> <!-- Agregar hash para sección -->
+          <li><a href="https://livitt-landing.netlify.app/#about">Sobre la app</a></li> <!-- Agregar hash para sección -->
+          <li><a href="https://livitt-landing.netlify.app/#about-us">Equipo</a></li> <!-- Agregar hash para sección -->
         </div>
         <div class="column-2">
-          <li><a href="/faqs.html">FAQs</a></li>
-          <li><a href="/contact.html">Contacto</a></li>
+          <li><a href="https://livitt-landing.netlify.app/faqs/">FAQs</a></li>
+          <li><a href="https://livitt-landing.netlify.app/contact/">Contacto</a></li>
         </div>
         <div class="column-3">
-          <li><a href="/login.html">Iniciar sesión</a></li>
-          <li><a href="/registrer.html">Registro</a></li>
+          <li><a href="https://livitt.netlify.app/">Iniciar sesión</a></li>
+          <li><a href="https://livitt.netlify.app/register">Registro</a></li>
         </div>
       </ul>
     </div>
