@@ -2,9 +2,9 @@
   <footer class="web-footer">
   <div class="footer-content">
     <div class="footer-about">
-      <h2 class="about-liviit">Sobre Liviit</h2>
+      <h2 class="about-livitt">Sobre Livitt</h2>
       <p>
-        Liviit es una app diseñada para mejorar la convivencia en pisos compartidos,
+        Livitt es una app diseñada para mejorar la convivencia en pisos compartidos,
         ofreciendo herramientas para la organización y gestión del hogar. ¡Haz que vivir
         juntos sea más sencillo y agradable!
       </p>
@@ -29,7 +29,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="politic">&copy; 2025 Liviit. Todos los derechos reservados.</p>
+    <p class="politic">&copy; 2025 Livitt. Todos los derechos reservados.</p>
   </div>
 </footer>
 </template>
@@ -132,7 +132,7 @@ a:hover {
   padding: 0 auto;
 }
 
-.about-liviit{
+.about-livitt{
   color: var(--rojopastel);
 }
 

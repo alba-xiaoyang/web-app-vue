@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 <template>
 <header class="web-header">
   <div class="mobile-header">
-    <h1>Liviit</h1>
+    <h1>Livitt</h1>
     <button id="menu-toggle" aria-label="Abrir menú">☰</button>
   </div>
   <nav class="buttons" aria-label="Menú de navegación principal">

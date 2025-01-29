@@ -1,7 +1,7 @@
 <template>
   <LiviitComponent/>
   <div class="register">
-    <h1 class="title">Únete a Liviit</h1>
+    <h1 class="title">Únete a Livitt</h1>
     <form @submit.prevent="handleRegister">
       <div class="data">
         <label for="name">Nombre de usuario</label>
