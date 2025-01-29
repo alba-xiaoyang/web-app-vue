@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <button class="button" id="faqs" href="https://livitt-landing.netlify.app/faqs/">FAQS</button>
       <button class="button" id="contact" href="https://livitt-landing.netlify.app/contact/">Contacto</button>
       <button class="button" id="login" href="https://livitt.netlify.app/">Iniciar sesión</button>
-      <button class="button" id="registrer" href="https://livitt.netlify.app/register">Registrarse</button>
+      <button class="button" id="register" href="https://livitt.netlify.app/register">Registrarse</button>
   </nav>
 </header>
 </template>
