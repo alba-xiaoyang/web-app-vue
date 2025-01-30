@@ -33,8 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
         nosotros</button>
       <button class="button" id="faqs" href="https://livitt-landing.netlify.app/faqs/">FAQS</button>
       <button class="button" id="contact" href="https://livitt-landing.netlify.app/contact/">Contacto</button>
-      <RouterLink class="button" id="login" href="/">Iniciar sesión</RouterLink>
-      <RouterLink class="button" id="register" href="/register">Registrarse</RouterLink>
+      <RouterLink class="button" id="login" to="/">Iniciar sesión</RouterLink>
+      <RouterLink class="button" id="register" to="/register">Registrarse</RouterLink>
     </nav>
   </header>
 </template>
@@ -88,6 +88,7 @@ nav {
   height: 100%;
   width: 200px;
   display: flex;
+  text-align: center;
   flex-direction: row;
   align-items: center;
   justify-content: center;
