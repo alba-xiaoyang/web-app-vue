@@ -1,4 +1,6 @@
 <script setup>
+import { RouterLink } from 'vue-router';
+
 document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById("menu-toggle");
   const navMenu = document.querySelector("nav");
@@ -19,33 +21,33 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <template>
-<header class="web-header">
-  <div class="mobile-header">
-    <h1>Livitt</h1>
-    <button id="menu-toggle" aria-label="Abrir menú">☰</button>
-  </div>
-  <nav class="buttons" aria-label="Menú de navegación principal">
+  <header class="web-header">
+    <div class="mobile-header">
+      <h1>Livitt</h1>
+      <button id="menu-toggle" aria-label="Abrir menú">☰</button>
+    </div>
+    <nav class="buttons" aria-label="Menú de navegación principal">
       <button class="button" data-target="home" href="https://livitt-landing.netlify.app/">Home</button>
       <button class="button" data-target="about" href="https://livitt-landing.netlify.app/#about">Sobre la app</button>
-      <button class="button" data-target="about-us" href="https://livitt-landing.netlify.app/#about-us">Sobre nosotros</button>
+      <button class="button" data-target="about-us" href="https://livitt-landing.netlify.app/#about-us">Sobre
+        nosotros</button>
       <button class="button" id="faqs" href="https://livitt-landing.netlify.app/faqs/">FAQS</button>
       <button class="button" id="contact" href="https://livitt-landing.netlify.app/contact/">Contacto</button>
-      <button class="button" id="login" href="https://livitt.netlify.app/">Iniciar sesión</button>
-      <button class="button" id="register" href="https://livitt.netlify.app/register">Registrarse</button>
-  </nav>
-</header>
+      <RouterLink class="button" id="login" href="/">Iniciar sesión</RouterLink>
+      <RouterLink class="button" id="register" href="/register">Registrarse</RouterLink>
+    </nav>
+  </header>
 </template>
 
 <style scoped>
-
 header {
-background-color: var(--grisclaropastel);
-height: 115px;
-width: 100%;
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: space-between;
+  background-color: var(--grisclaropastel);
+  height: 115px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .mobile-header {
@@ -54,51 +56,53 @@ justify-content: space-between;
 }
 
 header h1 {
-font-size: 100px;
-height: 115px;
-width: 20%;
-color: var(--rojopastel);
-padding-left: 50px;
-display: flex;
-flex-direction: column;
-text-align: left;
-justify-content: center;
-background-color: transparent;
+  font-size: 100px;
+  height: 115px;
+  width: 20%;
+  color: var(--rojopastel);
+  padding-left: 50px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+  background-color: transparent;
 }
 
 #menu-toggle {
-  display: none; /* Ocultar en pantallas grandes */
+  display: none;
+  /* Ocultar en pantallas grandes */
 }
 
 
 nav {
-height: 115px;
-width: 80%;
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: flex-end;
-background-color: transparent;
+  height: 115px;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: transparent;
 }
 
-button {
-height: 100%;
-width: 200px;
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: center;
-color: var(--rojopastel);
-background-color: transparent;
-font-size: 20px;
-font-family: Questrial, sans-serif;
-border: transparent;
+.button {
+  height: 100%;
+  width: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: var(--rojopastel);
+  background-color: transparent;
+  font-size: 20px;
+  font-family: Questrial, sans-serif;
+  border: transparent;
+  text-decoration: none;
 }
 
-button:hover {
-background-color: var(--rojopastel);
-color: var(--grisclaropastel);
-cursor: pointer;
+.button:hover {
+  background-color: var(--rojopastel);
+  color: var(--grisclaropastel);
+  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
@@ -144,7 +148,8 @@ cursor: pointer;
     background-color: var(--grisclaropastel);
     flex-direction: column;
     align-items: center;
-    position: relative; /* Asegura que no se superponga */
+    position: relative;
+    /* Asegura que no se superponga */
     gap: 10px;
     padding-top: 50px;
   }
@@ -166,5 +171,4 @@ cursor: pointer;
     color: var(--grisclaropastel);
   }
 }
-
 </style>
